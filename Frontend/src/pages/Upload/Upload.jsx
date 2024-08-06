@@ -1,10 +1,12 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import axios from 'axios';
 import './Upload.css';
 import upload_icon from '../../assets/cloud-upload.svg';
+import { StoreContext } from '../../context/storeContext';
 // import img_1 from '../../assets/img-1.jpg';
 
 const Upload = () => {
+    const {url} = useContext(StoreContext);
     const [dragBackground, setDragBackground] = useState({
         backgroundColor: 'transparent',
         opacity: '1',
@@ -86,7 +88,7 @@ const Upload = () => {
                 },
             };
 
-            const response = await axios.post('http://localhost:3000/api/upload', formData, config);
+            const response = await axios.post(`${url}api/upload`, formData, config);
             console.log('Upload successful:', response.data);
             setSelectedImages([]);
         } catch (error) {

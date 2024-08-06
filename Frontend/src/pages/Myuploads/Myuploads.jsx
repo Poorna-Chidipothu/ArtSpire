@@ -5,7 +5,7 @@ import { StoreContext } from '../../context/storeContext';
 
 
 const Myuploads = () => {
-    const { setAlertBox,setImgId,myImages,setMyImages } = useContext(StoreContext);
+    const { url,setAlertBox,setImgId,myImages,setMyImages } = useContext(StoreContext);
     
     
 
@@ -18,7 +18,7 @@ const Myuploads = () => {
 
     useEffect(() => {
         const fetchMyUploads = async () => {
-            const response = await axios.get('http://localhost:3000/api/get-img/my-uploads',
+            const response = await axios.get(`${url}/api/get-img/my-uploads`,
                 {
                   headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -26,7 +26,6 @@ const Myuploads = () => {
                 }
             );
             setMyImages(response.data.images.reverse());
-            // console.log(myImages)
         }
         fetchMyUploads();
     },[]);

@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import './AiGen.css'
 import axios from 'axios';
 import load from '../../assets/load.svg';
 import arrow from '../../assets/arrow.svg'
+import { StoreContext } from '../../context/storeContext';
 
 
 
 const AiGen = () => {
-
+  const {url} = useContext(StoreContext);
   const [userPrompt,setUserPrompt] = useState('');
   const [imgQuantity,setImgQuantity] = useState(4);
   // const [loading,setLoading] = useState(false);
@@ -16,7 +17,7 @@ const AiGen = () => {
 
   const genAiImages = async (uPrompt, imgCount) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/ai-gen/generate-images', 
+      const response = await axios.post(`${url}/api/ai-gen/generate-images`, 
         {
           userPrompt: uPrompt,
           imgCount: imgCount,
@@ -32,7 +33,7 @@ const AiGen = () => {
 
       const interval = setInterval(async () => {  // Define interval here
         try {
-          const statusResponse = await axios.get('http://localhost:3000/api/ai-gen/task-status', {
+          const statusResponse = await axios.get(`${url}/api/ai-gen/task-status`, {
             params: { statusUrl: status_url },
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -44,7 +45,7 @@ const AiGen = () => {
             const images = statusResponse.data.result.output;
 
             // Store the images in MongoDB
-            await axios.post('http://localhost:3000/api/ai-gen/store-images', { images }, {
+            await axios.post(`${url}/api/ai-gen/store-images`, { images }, {
               headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
               }
@@ -101,7 +102,7 @@ const AiGen = () => {
 
   useEffect(() => {
     const fetchAIImages = async()=> {
-      const result = await axios.get('http://localhost:3000/api/get-img/get-aigen-images',{
+      const result = await axios.get(`${url}/api/get-img/get-aigen-images`,{
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

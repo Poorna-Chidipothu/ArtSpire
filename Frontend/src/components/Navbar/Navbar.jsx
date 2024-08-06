@@ -10,7 +10,7 @@ import axios from 'axios';
 
 
 const Navbar = () => {
-  const {popUp,setPopUp,setCurrentState,menuItem,setMenuItem,token,setToken,username,setUsername,alertBox,setAlertBox,imgId,myImages,setMyImages,setImgId} = useContext(StoreContext);
+  const {popUp,setPopUp,setCurrentState,menuItem,url,setMenuItem,token,setToken,username,setUsername,alertBox,setAlertBox,imgId,myImages,setMyImages,setImgId} = useContext(StoreContext);
   const [showMenu,setShowMenu] = useState(''); 
   const [headStyle,setHeadStyle] = useState({
     backgroundColor: 'transparent',
@@ -62,7 +62,7 @@ const Navbar = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`http://localhost:3000/api/delete/${imgId}`, {
+      const response = await axios.delete(`${url}/api/delete/${imgId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

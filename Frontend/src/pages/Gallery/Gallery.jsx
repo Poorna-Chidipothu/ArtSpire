@@ -1,10 +1,11 @@
 // import React from 'react'
 import './Gallery.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { StoreContext } from '../../context/storeContext';
 
 const Gallery = () => {
-
+  const {url} = useContext(StoreContext);
   const [allImages,setAllImages] = useState([]);
 
   const getDownloadUrl = (url) => {
@@ -17,7 +18,7 @@ const Gallery = () => {
 
   const handleLike = async (id) => {
     try {
-      const response = await axios.post(`http://localhost:3000/api/like/${id}`, {}, {
+      const response = await axios.post(`${url}/api/like/${id}`, {}, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -37,7 +38,7 @@ const Gallery = () => {
 
   useEffect(()=>{
     const fetchImages = async()=> {
-        const result = await axios.get('http://localhost:3000/api/get-img/get-images',{
+        const result = await axios.get(`${url}/api/get-img/get-images`,{
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
