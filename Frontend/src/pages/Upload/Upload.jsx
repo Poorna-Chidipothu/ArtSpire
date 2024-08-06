@@ -88,7 +88,7 @@ const Upload = () => {
                 },
             };
 
-            const response = await axios.post(`${url}api/upload`, formData, config);
+            const response = await axios.post(`${url}/api/upload`, formData, config);
             console.log('Upload successful:', response.data);
             setSelectedImages([]);
         } catch (error) {
