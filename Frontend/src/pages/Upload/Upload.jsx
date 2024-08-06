@@ -92,7 +92,7 @@ const Upload = () => {
             console.log('Upload successful:', response.data);
             setSelectedImages([]);
         } catch (error) {
-            console.error('Error uploading images:', error);
+            console.error('Error uploading images:', error.response);
         }
     };
 
