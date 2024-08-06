@@ -1,0 +1,126 @@
+.home{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+}
+.home .images_list{
+    max-width: 90%;
+    gap: 20px;
+    columns: 5 340px;
+    /* mask-image: linear-gradient(to top,rgba(0,0,0,1) 95%,rgba(0,0,0,0) 5%); */
+}
+.images_list .image{
+    position: relative;
+    list-style-type: none;
+    margin-bottom: 19px;
+    overflow: hidden;
+    border-radius: 8px;
+    display: flex;
+    cursor: pointer;
+    background-color: #cdcecd;
+}
+.image:hover .image_content{
+    bottom: 0;
+}
+.image:hover .img_like{
+    opacity: 1;
+}
+.image .image_content{
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 17px 17px;
+    background: linear-gradient(to top,rgba(0,0,0,1) 20%,rgba(0,0,0,0) 80%);
+    color: #f2fbea;
+    transition: bottom .5s ease;
+}
+.image .img_like{
+    position: absolute;
+    right: 17px;
+    top: 17px;
+    opacity: 0;
+    transition: opacity .5s ease;
+}
+.image .img_like, .image .img_dwn{
+    background-color: #f2fbea;
+    height: 35px;
+    width: 35px;
+    font-size: 20px;
+    color: #18360d;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img_like ion-icon{
+    padding: 0;
+    margin: 0;
+}
+.images_list img{
+    width: 100%;
+    transition: transform .3s ease;
+}
+.images_list img:hover{
+    transform: scale(1.03);
+}
+.signup_msg{
+    width: 90.2%;
+    margin-top: 20px;
+    border: 3px solid #7dd14a;
+    border-radius: 15px;
+    background-color: #e1f6d1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+.signup_msg p{
+    text-align: center;
+    font-size: clamp(23px,3vw,35px);
+    color: #18360d;
+    font-weight: 500;
+}
+.signup_msg .button{
+    padding: 8px 70px;
+    font-size: 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #5db62c;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width : 767px){
+    .image .img_like{
+        opacity: 1;
+    }
+    .image .image_content{
+        bottom: 0;
+    }
+    .home .images_list{
+        max-width: 95%;
+    }
+    .signup_msg{
+        width: 95%;
+        border: 2.5px solid #7dd14a;
+        border-radius: 10px;
+        row-gap: 10px;
+        padding: 20px;
+    }
+    .signup_msg .button{
+        border-radius: 8px;
+    }
+    
+}
