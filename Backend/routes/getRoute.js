@@ -25,7 +25,9 @@ getRoute.get('/my-uploads',authMiddleware,async (req,res) => {
  
 getRoute.get('/get-home-images',async (req,res) => {
     try{
-        const images = await Image.find().limit(10);
+        const images = await Image.find({})
+                        .sort({ uploadDate: -1 })
+                        .limit(10);
         res.status(200).json({
             success: true,
             images: images,
