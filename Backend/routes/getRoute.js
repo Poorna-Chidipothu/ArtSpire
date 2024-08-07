@@ -23,6 +23,18 @@ getRoute.get('/my-uploads',authMiddleware,async (req,res) => {
     }    
 });
  
+getRoute.get('/get-home-images',async (req,res) => {
+    try{
+        const images = await Image.find().limit(10);
+        res.status(200).json({
+            success: true,
+            images: images,
+            message: "Images fetched successfully"
+            });
+    }catch(error){
+        console.log(error);
+    }
+})
 
 getRoute.get('/get-images',authMiddleware,async (req,res) => {
     try{
