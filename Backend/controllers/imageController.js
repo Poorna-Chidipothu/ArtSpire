@@ -6,7 +6,7 @@ import path from 'path';
 
 const addImageController = async (req, res) => {
     try {
-        console.log('addImageController called');
+        // console.log('addImageController called');
         const tags = req.body['tags'];
         const userId = req.userId;
         const pictures = req.files; // Multer array upload
@@ -16,7 +16,7 @@ const addImageController = async (req, res) => {
         }
 
         const uploadedImages = [];
-        console.log(tags);
+        // console.log(tags);
 
         for (let i = 0; i < pictures.length; i++) {
             const picture = pictures[i];
