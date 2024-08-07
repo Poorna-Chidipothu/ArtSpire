@@ -94,7 +94,7 @@ const Gallery = () => {
         >
           <div className="gallery_container"> 
             <ul className="images_list">
-                {someImages.map((image,index)=>(
+                {someImages.reverse().map((image,index)=>(
                   <li key={index} className="image">
                     <img src={image.url}/>
                     <span className="img_like"><ion-icon onClick={() => handleLike(image._id)} name="heart-outline"></ion-icon></span>
