@@ -42,7 +42,7 @@ getRoute.get('/get-images', authMiddleware, async (req, res) => {
 
         // Fetch images with pagination
         const images = await Image.find({})
-            .sort({ createdAt: -1 })
+            .sort({ uploadDate: -1 })
             .skip((page - 1) * limit)
             .limit(Number(limit));
 
