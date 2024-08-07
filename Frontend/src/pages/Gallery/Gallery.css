@@ -14,6 +14,23 @@
     gap: 20px;
     columns: 5 340px;
 }
+.load{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 15px;
+}
+.load svg{
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    animation: load 1.5s linear infinite;
+}
+.load svg path{
+    fill: var(--main-color);
+}
 
 @media screen and (max-width : 767px){
     .gallery_container .images_list{
