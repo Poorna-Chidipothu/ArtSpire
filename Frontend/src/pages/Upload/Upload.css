@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 30px;
     padding-top: 80px;
     width: 100%;
 }
@@ -63,7 +63,7 @@
 
 .uploaded_images{
     width: 95%;
-    padding: 60px 30px;
+    padding: 40px 30px;
     text-align: center;
     /* border-top: 2px solid #333;
     border-bottom: 2px solid #333; */
