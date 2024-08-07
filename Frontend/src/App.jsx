@@ -26,11 +26,10 @@ function App() {
         <Route path='/about' element={<About/>}/>
         <Route path='/ai-gen' element={!token ? <NotLoggedIn/> : <AiGen/>}/>
         <Route path='/gallery' element={!token ? <NotLoggedIn/> : <Gallery/>}/>
-        <Route path='/upload' element={<Upload/>}/>
-        <Route path='/my-uploads' element={<Myuploads/>}/>
+        <Route path='/upload' element={!token ? <NotLoggedIn/> : <Upload/>}/>
+        <Route path='/my-uploads' element={!token ? <NotLoggedIn/> : <Myuploads/>}/>
       </Routes>
       <Footer/>
-      
     </>
   )
 }

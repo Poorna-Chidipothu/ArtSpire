@@ -1,7 +1,9 @@
 // import React from 'react'
 import './About.css'
-import img_2 from '../../assets/img-2.jpg'
-
+import ab_gallery from '../../assets/about_gallery.jpg';
+import ab_upload from '../../assets/about_upload.jpg';
+import ab_ai from '../../assets/about_ai.jpg';
+import ab_fav from '../../assets/about_fav.jpg';
 const About = () => {
   return (
     <section className='about'>
@@ -20,7 +22,7 @@ const About = () => {
         <h1 className="feature_title">Features</h1>
         <div className="about_feature">
           <div className="feature_image">
-            <img src={img_2} alt="" />
+            <img src={ab_gallery} alt="" />
           </div>
           <div className="feature_desc">
             <div className="feature_icon"><ion-icon className="icon" name="images"></ion-icon></div>
@@ -40,12 +42,12 @@ const About = () => {
             </div>
           </div>
           <div className="feature_image">
-            <img src={img_2} alt="" />
+            <img src={ab_upload} alt="" />
           </div>
         </div>
         <div className="about_feature">
           <div className="feature_image">
-            <img src={img_2} alt="" />
+            <img src={ab_ai} alt="" />
           </div>
           <div className="feature_desc">
             <div className="feature_icon"><ion-icon className="icon" name="sparkles"></ion-icon></div>
@@ -64,7 +66,7 @@ const About = () => {
             </div>
           </div>
           <div className="feature_image">
-            <img src={img_2} alt="" />
+            <img src={ab_fav} alt="" />
           </div>
         </div>
       </div>

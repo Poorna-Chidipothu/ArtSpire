@@ -162,7 +162,7 @@
     transform: scale(1.03);
 }
 .generated{
-    width: 90%;
+    width: 100%;
     margin-inline: auto;
     margin-top: 10px;
     min-height: 200px;
@@ -193,8 +193,9 @@
 
 @media screen and (max-width : 767px){
     .ai-gen .ai-gen_hero{
+        width: 100%;
         padding: 30px 30px 70px;
-        border-radius: 10px;
+        border-radius: 0px;
     }
     .ai-gen_hero .ai-gen_hero-title{
         font-size: 41px;
@@ -203,7 +204,6 @@
     .ai-gen_hero .ai-gen_hero-des{
         max-width: 100%;
     }
-
 
     .ai-gen_hero .search_box{
         padding-inline: 7px;
@@ -217,20 +217,27 @@
         color: #f2fbea;
         position: absolute;
         bottom: -55px;
-        right: 80px;
+        right: 90px;
     }
     .generate_btn{
+        font-size: 24px !important;
         position: absolute;
-        bottom: -55px;
+        bottom: -59px;
         right: 0;
+        width: 80px;
+        padding-block: 23px !important;
     }
     .generate_btn span{
         display: none;
+    }
+    .generated .ai-gen_images .image_card{
+        width: 100%;
     }
     .not_created .arrow{
         display: none;
     }    
     .ai-gen_images{
+        width: 95%;
         row-gap: 25px;
     }
     .ai-gen_images .image_card{

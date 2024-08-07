@@ -56,12 +56,17 @@
     color: red;
     padding-top: 25px;
 }
+.success{
+    color: green;
+    font-size: 22px;
+}
 
 .uploaded_images{
     width: 95%;
     padding: 60px 30px;
-    border-top: 2px solid #333;
-    border-bottom: 2px solid #333;
+    text-align: center;
+    /* border-top: 2px solid #333;
+    border-bottom: 2px solid #333; */
 }
 .uploaded_images_container{
     /* background-color: aqua; */
@@ -132,6 +137,21 @@
     border: none;
     outline: none;
     border-radius: 10px;
+}
+.up_btn button span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.up_btn button span svg{
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    animation: load 1.5s linear infinite;
+}
+.up_btn button span svg path{
+    fill: #f2fbea;
 }
 .images_empty{
     width: 100%;

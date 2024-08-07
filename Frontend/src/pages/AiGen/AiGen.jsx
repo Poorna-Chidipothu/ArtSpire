@@ -136,7 +136,7 @@ const AiGen = () => {
         </div>
       </div>
       <div className="ai-gen_images">
-        {genImg} 
+        {genImg}
       </div>
       <div className="generated">
         {storedAiImages.length > 0 || genImg.length > 0

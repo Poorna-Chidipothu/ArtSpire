@@ -230,6 +230,38 @@ nav .nav_items{
     nav{
         gap: 15px;
     }
+    .show_menu{
+        left: 0;
+        width: 70% !important;
+    }
+    
+    .nav_controlls .LoginSigup{
+        border: 2.5px solid rgba(24, 54, 13,.7);
+        padding: 5px 30px;
+        border-radius: 8px;
+    }
+    .nav_controlls .LoginSigup:nth-of-type(2){
+        display: none;
+    }
+
+    .upload_btn{
+        padding-inline: 15px;
+        padding-block: 0px;
+        padding: 0 15px !important;
+        font-size: 23px;
+    }
+    .nav_controlls .upload_btn .text,.user_info .name{
+        display: none;
+    }
+    .user_info div{
+        gap: 3px;
+    }
+    .alert{
+        max-width: 90%;
+        width: 100%;
+    }
+}
+@media screen and (max-width : 960px){
     .nav{
         position: absolute;
         top: 0;
@@ -275,28 +307,12 @@ nav .nav_items{
     }
     .show_menu{
         left: 0;
+        width: 50%;
     }
     .nav_controlls{
         gap: 5px;
     }
-    .nav_controlls .LoginSigup{
-        border: 2.5px solid rgba(24, 54, 13,.7);
-        padding: 5px 30px;
-        border-radius: 8px;
-    }
-    .nav_controlls .LoginSigup:nth-of-type(2){
-        display: none;
-    }
-
     .upload_btn{
-        padding-inline: 15px;
-        padding-block: 0px;
-        font-size: 23px;
-    }
-    .nav_controlls .upload_btn .text,.user_info .name{
-        display: none;
-    }
-    .user_info div{
-        gap: 3px;
+        padding: 5px 20px;
     }
 }
