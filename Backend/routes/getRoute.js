@@ -34,13 +34,18 @@ getRoute.get('/get-home-images',async (req,res) => {
     }catch(error){
         console.log(error);
     }
-})
+});
 
-getRoute.get('/get-images',authMiddleware,async (req,res) => {
-    try{
-        // Fetch all images
-        const images = await Image.find({});
-        
+getRoute.get('/get-images', authMiddleware, async (req, res) => {
+    try {
+        const { page = 1, limit = 20 } = req.query;
+
+        // Fetch images with pagination
+        const images = await Image.find({})
+            .sort({ createdAt: -1 })
+            .skip((page - 1) * limit)
+            .limit(Number(limit));
+
         // Fetch user details for each image
         const imagesWithUserNames = await Promise.all(images.map(async (image) => {
             const user = await UserModel.findById(image.uploadedBy);
@@ -50,15 +55,15 @@ getRoute.get('/get-images',authMiddleware,async (req,res) => {
                 uploader: user.name
             };
         }));
-        
+
         res.status(200).json({
-        success: true,
-        images: imagesWithUserNames,
-        message: "Images fetched successfully"
+            success: true,
+            images: imagesWithUserNames,
+            message: "Images fetched successfully"
         });
-    }
-    catch(error){
+    } catch (error) {
         console.log(error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
     }
 });
 
