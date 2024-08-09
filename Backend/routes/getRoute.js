@@ -40,10 +40,16 @@ getRoute.get('/get-home-images',async (req,res) => {
 
 getRoute.get('/get-images', authMiddleware, async (req, res) => {
     try {
-        const { page = 1, limit = 20 } = req.query;
+        const { page = 1, limit = 20, search = '' } = req.query;
+
+        // Create a search query object
+        const searchQuery = search
+            ? { tags: { $regex: new RegExp(query, 'i') } } // Assuming you have a 'tags' field in your image schema
+            : {};
 
         // Fetch images with pagination
-        const images = await Image.find({})
+        
+        const images = await Image.find(searchQuery)
             .sort({ uploadDate: -1 })
             .skip((page - 1) * limit)
             .limit(Number(limit));
