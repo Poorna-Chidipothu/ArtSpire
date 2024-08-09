@@ -78,9 +78,9 @@ nav .nav_items{
     outline: none;
 }
 .nav_controlls .LoginSigup,.upload_btn{
-    border: 3px solid rgba(24, 54, 13,.7);
+    border: 0.15rem solid rgba(24, 54, 13,.7);
     padding: 5px 30px;
-    border-radius: 10px;
+    border-radius: 7px;
     font-size: 20px;
     background-color: transparent;
     color: #18360d;
@@ -90,11 +90,11 @@ nav .nav_items{
 .nav_controlls .LoginSigup:nth-child(3),.upload_btn{
     background-color: var(--main-color);
     color: #f2fbea;
-    border: 3px solid var(--main-color);
+    border: 0.15rem solid var(--main-color);
 
 }
 .nav_controlls .LoginSigup:hover{
-    border: 3px solid var(--main-color);
+    border: 0.15rem solid var(--main-color);
     background-color: var(--main-color);
     color: #f2fbea;
 }
@@ -177,7 +177,7 @@ nav .nav_items{
 }
 .logout{
     margin-top: 15px;
-    border-top: 1px solid rgba(24, 54, 13,.4);
+    border-top: 0.05rem solid rgba(24, 54, 13,.4);
 }
 .logout:hover{
     background-color: #ffa3a3;
@@ -236,7 +236,7 @@ nav .nav_items{
     }
     
     .nav_controlls .LoginSigup{
-        border: 2.5px solid rgba(24, 54, 13,.7);
+        border: 0.125rem solid rgba(24, 54, 13,.7);
         padding: 5px 30px;
         border-radius: 8px;
     }

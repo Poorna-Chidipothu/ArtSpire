@@ -9,6 +9,7 @@ const Gallery = () => {
   const [someImages,setSomeImages] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [search, setSearch] = useState('');
 
   const getDownloadUrl = (url) => {
     const cloudinaryBase = 'res.cloudinary.com';
@@ -37,43 +38,63 @@ const Gallery = () => {
       console.error('Error liking image:', error);
     }
   };
-  useEffect(() => {
-    fetchImages();
-  }, []);
+  
 
-  const fetchImages = async () => {
+  const fetchImages = async (page,search) => {
     try {
-        const response = await axios.get(`${url}/api/get-img/get-images?page=${page}&limit=20`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
+        const response = await axios.get(`${url}/api/get-img/get-images`, {
+          params: {
+              page,
+              limit: 20,
+              search
+          },
+          headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
         });
         const newImages = response.data.images;
-        setSomeImages(prevImages => [...prevImages, ...newImages]);
         if (newImages.length < 20) {
             setHasMore(false); // No more images to fetch
-        } else {
-            setPage(prevPage => prevPage + 1);
         }
+        setSomeImages(prevImages => (page === 1 ? newImages : [...prevImages, ...newImages]));
     } catch (error) {
         console.error('Error fetching images:', error);
     }
-};
+  };
+
+  useEffect(() => {
+    fetchImages(page,search);
+  }, [page,search]);
+
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+    setPage(1);
+    setSomeImages([]);
+    setHasMore(true);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setPage(1);
+    setSomeImages([]);
+    setHasMore(true);
+    fetchImages(1, search);
+  };
 
   return (
     <>
       <section className='gallery'>
         <div className="search_box">
-          <form action="">
+          <form onSubmit={handleSearchSubmit}>
             <ion-icon name="search-outline"></ion-icon>
-            <input type="text" placeholder='Search Images...' />
+            <input type="text" placeholder='Search Images...' value={search} onChange={handleSearchChange} />
             <ion-icon name="close-outline"></ion-icon>
             <button type='submit'>Search</button>
           </form>
         </div>
         <InfiniteScroll
               dataLength={someImages.length}
-              next={fetchImages}
+              next={() => setPage(page+1)}
               hasMore={hasMore}
               loader={
                 <span className='load'>

@@ -146,14 +146,6 @@
     animation: load 1.5s linear infinite;
 }
 
-@keyframes load {
-    from{
-        transform: rotate(0deg);
-    }
-    to{
-        transform: rotate(360deg);
-    }
-}
 .load .img_like,.load .img_dwn{
     opacity: 0;
     pointer-events: none;

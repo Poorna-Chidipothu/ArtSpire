@@ -22,3 +22,24 @@ a{
   text-decoration: none;
   color: inherit;
 }
+.load svg{
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  animation: load 1.5s linear infinite;
+  
+}
+
+
+
+
+/* animations */
+
+@keyframes load {
+  from{
+      transform: rotate(0deg);
+  }
+  to{
+      transform: rotate(360deg);
+  }
+}

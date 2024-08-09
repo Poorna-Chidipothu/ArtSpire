@@ -96,9 +96,6 @@
 .about_feature:nth-child(odd) .feature_desc{
     align-items: flex-end;
 }
-/* .about_feature:nth-child(odd) .feature_icon{
-    text-align: right;
-} */
 .feature_desc .feature_icon{
     display: grid;
     place-items: center;
@@ -216,6 +213,9 @@
     .about_feature .feature_image{
         max-width: 100%;
         border-radius: 10px;
+    }
+    .feature_image img{
+        width: 100%;
     }
     .feature_desc{
         max-width: 95%;
