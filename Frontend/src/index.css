@@ -43,3 +43,12 @@ a{
       transform: rotate(360deg);
   }
 }
+
+@keyframes slide {
+  from{
+    transform: translateY(-30px);
+  }
+  to{
+    transform: translateY(0px);
+  }
+}

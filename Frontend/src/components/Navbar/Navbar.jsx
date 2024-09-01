@@ -3,19 +3,22 @@ import { useContext, useEffect } from 'react';
 import './Navbar.css'
 // import Logo from '../../assets/Logo.png'
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import LoginSignup from '../LoginSignup/LoginSignup';
 import { StoreContext } from '../../context/storeContext';
 import axios from 'axios';
+import Search from '../Search/Search';
 
 
 const Navbar = () => {
   const {popUp,setPopUp,setCurrentState,menuItem,url,setMenuItem,token,setToken,username,setUsername,alertBox,setAlertBox,imgId,myImages,setMyImages,setImgId} = useContext(StoreContext);
-  const [showMenu,setShowMenu] = useState(''); 
+  const [showMenu,setShowMenu] = useState('');
+  const [searchOpen, setSearchOpen] = useState(false); 
   const [headStyle,setHeadStyle] = useState({
     backgroundColor: 'transparent',
     boxShadow: 'none'
   });
+  
   useEffect(()=> {
     const handleScroll = () => {
       if (window.scrollY > 200) {
@@ -47,11 +50,23 @@ const Navbar = () => {
       document.body.style.overflow = "auto";
     }
   },[popUp]);
+
+  // useEffect(() => {
+  //   const handleUnload = () => {
+  //     localStorage.setItem('menu','home');
+  //   }
+  //   window.addEventListener('beforeunload', handleUnload);
+  //   return () => {
+  //     window.removeEventListener('beforeunload', handleUnload);
+  //   }
+
+  // },[]);
   
   const navigate = useNavigate();
 
   const logout = () => {
     setMenuItem('home');
+    localStorage.setItem('menu','home');
     localStorage.removeItem('token');
     setToken('');
     localStorage.removeItem('name');
@@ -94,7 +109,7 @@ const Navbar = () => {
           {/* <i className="ri-menu-2-fill"></i> */}
           <ion-icon name="menu-outline"></ion-icon>
         </div>
-        <Link to='/' onClick={()=> setMenuItem('home')}>
+        <Link to='/' onClick={()=> {setMenuItem('home');localStorage.setItem('menu','home')}}>
           <div className="logo">
             {/* <img src={Logo} alt="" /> */}
             <p>ArtSpire</p>
@@ -103,10 +118,10 @@ const Navbar = () => {
         <div className={`nav ${showMenu}`} >
           <span className="menu_close_icon" onClick={()=> setShowMenu('')}><ion-icon name="close-outline"></ion-icon></span>
           <ul className="nav_items">
-            <Link to='/' className={`nav_item ${menuItem==='home' ? 'active' : ''}`} onClick={()=> {setMenuItem('home'); setShowMenu('')}}>Home <ion-icon name="arrow-forward-outline"></ion-icon></Link>
-            <Link to='/about' className={`nav_item ${menuItem==='about' ? 'active' : ''}`} onClick={()=>{setMenuItem('about'); setShowMenu('')}}>About <ion-icon name="arrow-forward-outline"></ion-icon></Link>
-            <Link to='/ai-gen' className={`nav_item ${menuItem==='aigen' ? 'active' : ''}`} onClick={()=>{setMenuItem('aigen'); setShowMenu('')}}>AiGen <ion-icon name="arrow-forward-outline"></ion-icon></Link>
-            <Link to='/gallery' className={`nav_item ${menuItem==='gallery' ? 'active' : ''}`} onClick={()=>{setMenuItem('gallery'); setShowMenu('')}}>Gallery <ion-icon name="arrow-forward-outline"></ion-icon></Link>
+            <Link to='/' className={`nav_item ${localStorage.getItem('menu')==='home' ? 'active' : ''}`} onClick={()=> {setMenuItem('home'); setShowMenu('');localStorage.setItem('menu','home')}}>Home <ion-icon name="arrow-forward-outline"></ion-icon></Link>
+            <Link to='/about' className={`nav_item ${localStorage.getItem('menu')==='about' ? 'active' : ''}`} onClick={()=>{setMenuItem('about'); setShowMenu('');localStorage.setItem('menu','about')}}>About <ion-icon name="arrow-forward-outline"></ion-icon></Link>
+            <Link to='/ai-gen' className={`nav_item ${localStorage.getItem('menu')==='aigen' ? 'active' : ''}`} onClick={()=>{setMenuItem('aigen'); setShowMenu('');localStorage.setItem('menu','aigen')}}>AiGen <ion-icon name="arrow-forward-outline"></ion-icon></Link>
+            <Link to='/gallery' className={`nav_item ${localStorage.getItem('menu')==='gallery' ? 'active' : ''}`} onClick={()=>{setMenuItem('gallery'); setShowMenu('');localStorage.setItem('menu','gallery')}}>Gallery <ion-icon name="arrow-forward-outline"></ion-icon></Link>
           </ul>
         </div>
       </nav>
@@ -118,7 +133,8 @@ const Navbar = () => {
           </>
         :
           <>
-            <Link to='/upload'><button className='upload_btn'><span className="icon"><i className="uil uil-upload"></i></span><span className="text">Upload</span></button></Link>
+            {localStorage.getItem('menu')==='gallery' ? <span className='search_icon' onClick={() => setSearchOpen(true)}><ion-icon name="search-outline"></ion-icon></span> : <></>}
+            <Link to='/upload' ><button className='upload_btn' onClick={() => localStorage.setItem('menu','')}><span className="icon"><i className="uil uil-upload"></i></span><span className="text">Upload</span></button></Link>
             <div className="user_info">
               <div>
                 <span><ion-icon name="person"></ion-icon></span>
@@ -133,10 +149,10 @@ const Navbar = () => {
               </ul>
             </div>
           </>
-          
         }
         
       </div>
+      {searchOpen ? <Search setSearchOpen={setSearchOpen}/> : <></>}
       
     </header>
   )

@@ -25,47 +25,6 @@
     font-weight: 500;
     opacity: 0.9;
 }
-.search_box{
-    width: 100%;
-    height: 50px;
-    padding-left: 15px ;
-    margin-top: 20px;
-    background-color: #f2fbea;
-    border-radius: 10px;
-}
-.search_box form{
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 6px;
-}
-.search_box input{
-    height: 100%;
-    width: 84%;
-    font-size: 20px;
-    padding: 10px;
-    border: none;
-    outline: none;
-    background: none;
-}
-.search_box ion-icon{
-    font-size: 25px;
-}
-.search_box ion-icon:nth-child(3){
-    cursor: pointer;
-}
-.search_box button{
-    margin: 5px;
-    padding-inline: 20px;
-    height: calc(100% - 11px);
-    background-color: #5db62c;
-    color: #fff;
-    font-size: 18px;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-}
 
 .hero_controls {
     width: 90%;

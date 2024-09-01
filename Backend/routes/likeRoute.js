@@ -6,18 +6,37 @@ const likeRoute = express.Router();
 
 likeRoute.post('/:imgId', authMiddleware, async (req, res) => {
   const imageId = req.params.imgId;
+  const userId = req.userId;
+  
   try {
     const image = await Image.findById(imageId);
+
     if (!image) {
-      return res.status(404).json({ message: 'Image not found' });
+      return res.status(404).json({ success: false, message: 'Image not found' });
     }
 
-    image.likes += 1;
+    // Check if the user has already liked the image.
+    const alreadyLiked = image.likedBy.includes(userId);
+
+    if (alreadyLiked) {
+      image.likedBy.pull(userId);  // Remove user from likedBy array
+      image.likes -= 1;
+    } else {
+      image.likedBy.push(userId);  // Add user to likedBy array
+      image.likes += 1;
+    }
+
     await image.save();
 
-    res.json({ message: 'Image liked successfully', likes: image.likes });
+    res.status(200).json({
+      message: alreadyLiked ? 'Image unliked' : 'Image liked',
+      likes: image.likes,
+      likedBy: image.likedBy,
+    });
+
   } catch (error) {
-    res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    console.log(error);
+    res.status(500).json({ success: false, message: 'Internal Server Error' });
   }
 });
 

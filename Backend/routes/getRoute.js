@@ -41,12 +41,14 @@ getRoute.get('/get-home-images',async (req,res) => {
 getRoute.get('/get-images', authMiddleware, async (req, res) => {
     try {
         const { page = 1, limit = 20, search = '' } = req.query;
+        const userId = req.userId;
 
         // Create a search query object
         const searchQuery = search
-            ? { tags: { $regex: new RegExp(query, 'i') } } // Assuming you have a 'tags' field in your image schema
+            ? { tags: { $regex: new RegExp(search, 'i') } }
             : {};
 
+        
         // Fetch images with pagination
         
         const images = await Image.find(searchQuery)
@@ -60,7 +62,10 @@ getRoute.get('/get-images', authMiddleware, async (req, res) => {
             return {
                 _id: image._id,
                 url: image.picture.picture_url,
-                uploader: user.name
+                uploader: user.name,
+                isLiked: image.likedBy.includes(userId),  // Pass this to the frontend
+                likes: image.likes, // Include like count for the uploader's page
+                blurHash: image.blurHash,
             };
         }));
 
@@ -70,9 +75,9 @@ getRoute.get('/get-images', authMiddleware, async (req, res) => {
             message: "Images fetched successfully"
         });
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ success: false, message: 'Internal Server Error' });
-    }
+        console.error('Error in get-images:', error.message);
+        res.status(500).json({ success: false, message: 'Internal Server Error', error: error.toString() });
+    }    
 });
 
 getRoute.get('/get-aigen-images',authMiddleware,async (req,res) => {

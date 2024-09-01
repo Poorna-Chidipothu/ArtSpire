@@ -30,8 +30,12 @@
     position: absolute;
     right: 15px;
     bottom: 15px;
+    
     opacity: 0;
     transition: opacity .5s ease;
+}
+.image .img_dwn ion-icon{
+    font-size: 20px;
 }
 .myuploads_container .images_list .image:hover .img_dwn{
     opacity: 1;
@@ -49,11 +53,27 @@
     padding: 5px 8px;
     border-radius: 5px;
     font-size: 14px;
-    background-color: #f2fbea;
+    background-color: #fff;
 }
-.myuploads_container .images_list .image ion-icon{
+/* .myuploads_container .images_list .image ion-icon{
     font-size: 15px;
+} */
+
+.img_close{
+    width: 33px;
+    height: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50% !important;
+    padding: 0 !important;
 }
+  
+.img_close ion-icon{
+  font-size: 20px !important;
+}
+
+
 
 
 

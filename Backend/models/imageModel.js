@@ -24,6 +24,10 @@ const imageSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  likedBy: [{ 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'User' 
+  }],
   tags: [{
     type: String,
   }],
@@ -32,17 +36,10 @@ const imageSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-//   comments: [{
-//     user: {
-//       type: mongoose.Schema.Types.ObjectId,
-//       ref: 'User',
-//     },
-//     text: String,
-//     date: {
-//       type: Date,
-//       default: Date.now,
-//     },
-//   }],
+  blurHash:{
+    type: String,
+    required: true,
+  }
 });
 
 const Image = mongoose.models.Image || mongoose.model('Image', imageSchema);

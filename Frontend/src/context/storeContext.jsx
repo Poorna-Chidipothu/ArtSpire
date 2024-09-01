@@ -5,8 +5,8 @@ export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props)=>{
     
-    // const url = 'http://localhost:3000'
-    const url = 'https://artspire-backend.onrender.com'
+    const url = 'http://localhost:3000'
+    // const url = 'https://artspire-backend.onrender.com'
     const [token,setToken] = useState("");
     const [username,setUsername] = useState("");
     const [popUp,setPopUp] = useState(false);
@@ -15,6 +15,7 @@ const StoreContextProvider = (props)=>{
     const [alertBox,setAlertBox] = useState(false);
     const [imgId,setImgId] = useState('');
     const [myImages,setMyImages] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(()=>{
         if(localStorage.getItem('token')){
@@ -40,7 +41,9 @@ const StoreContextProvider = (props)=>{
         imgId,
         setImgId,
         myImages,
-        setMyImages
+        setMyImages,
+        searchQuery,
+        setSearchQuery
     }
 
     return(

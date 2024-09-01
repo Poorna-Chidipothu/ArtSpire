@@ -47,7 +47,7 @@ const Myuploads = () => {
                   {myImages.map((image,index)=>(
                     <li key={index} className="image">
                       <img src={image.picture.picture_url}/>
-                      <span className="img_like"><ion-icon name="close-outline" onClick={()=>handleDelClick(image._id)}></ion-icon></span>
+                      <span className="img_close"><ion-icon name="trash" onClick={()=>handleDelClick(image._id)}></ion-icon></span>
                       <span className='likes'><ion-icon name="heart"></ion-icon> {image.likes}</span>
                       <a href={image.picture.picture_url} download className="img_dwn"><ion-icon name="arrow-down-outline"></ion-icon></a>
                     </li>

@@ -5,7 +5,7 @@ header{
     height: 70px;
     width: 100%;
     background-color: transparent;
-    backdrop-filter: blur(20px);
+    /* backdrop-filter: blur(20px); */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -70,6 +70,26 @@ nav .nav_items{
     font-size: 20px;
     color: #18360d;
 }
+.nav_controlls .search_icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 10px;
+    margin-right: 7px;
+    cursor: pointer;
+    transition: background-color .3s ease;
+}
+.nav_controlls .search_icon:hover{
+    background-color: var(--main-color);
+    box-shadow: 0 0 20px rgba(51, 255, 0, 0.2);
+    color: #fff;
+}
+.search_icon ion-icon{
+    font-size: 23px;
+}
+
+
 .upload_btn{
     display: flex;
     align-items: center;
@@ -111,7 +131,9 @@ nav .nav_items{
 .user_info{
     height: 100%;
     position: relative;
-    padding: 15px;
+    padding: 10px;
+    padding-block: 15px;
+    /* background-color: #46911f; */
 }
 .user_info div{
     display: flex;

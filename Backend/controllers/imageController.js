@@ -1,8 +1,8 @@
 import { uploadImageOnCloudinary } from '../helper/cloudinaryHelper.js';
 import { generateImageHash } from '../utils/hashImage.js';
+import { generateBlurHash } from '../utils/blurHashUtils.js';
 import Image from '../models/imageModel.js';
 import fs from 'fs';
-import path from 'path';
 
 const addImageController = async (req, res) => {
     try {
@@ -31,6 +31,8 @@ const addImageController = async (req, res) => {
             }
 
             const result = await uploadImageOnCloudinary(picture.path, 'Images');
+            // Generate BlurHash
+            const blurHash = await generateBlurHash(picture.path);
 
             const newImage = new Image({
                 picture: {
@@ -40,6 +42,7 @@ const addImageController = async (req, res) => {
                 uploadedBy: userId,
                 tags: imageTags ? imageTags.split(',') : [],
                 hash: imageHash,
+                blurHash: blurHash,
             });
 
             await newImage.save();

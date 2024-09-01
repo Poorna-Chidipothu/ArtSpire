@@ -58,7 +58,7 @@ const Home = () => {
                   <>
                     <p>Do you like the images? <br /> you can discover breathtaking images by visting the Gallery</p>
                     {/* <button onClick={()=>{}}>Go to Gallery <ion-icon name="arrow-forward-outline"></ion-icon></button> */}
-                    <Link to='/gallery' className='button' onClick={()=>{setMenuItem('gallery')}}>Go to Gallery <ion-icon name="arrow-forward-outline"></ion-icon></Link>
+                    <Link to='/gallery' className='button' onClick={()=>{setMenuItem('gallery');localStorage.setItem('menu','gallery')}}>Go to Gallery <ion-icon name="arrow-forward-outline"></ion-icon></Link>
                   </>
                 }
               </div>
