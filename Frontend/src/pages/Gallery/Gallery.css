@@ -135,6 +135,7 @@
   justify-content: center;
   gap: 20px;
   height: calc(100vh - 70px);
+  animation: fadein 1.2s linear;
 }
 .not__found img{
   width: 400px;
