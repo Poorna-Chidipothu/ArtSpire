@@ -19,14 +19,14 @@ import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-// Define __dirname for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+// // Define __dirname for ES modules
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
 
 dotenv.config();
 
 const app = express()
-const port = 3000 || process.env.PORT
+const port = process.env.PORT || 3000;
 
 // Body-parser middleware
 app.use(bodyParser.json());
