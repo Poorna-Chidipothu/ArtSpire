@@ -97,7 +97,7 @@ nav .nav_items{
     gap: 8px;
     outline: none;
 }
-.nav_controlls .LoginSigup,.upload_btn{
+.nav_controlls .Login,.nav_controlls .Signup,.upload_btn{
     border: 0.15rem solid rgba(24, 54, 13,.7);
     padding: 5px 30px;
     border-radius: 7px;
@@ -107,13 +107,12 @@ nav .nav_items{
     cursor: pointer;
     transition: all .3s ease;
 }
-.nav_controlls .LoginSigup:nth-child(3),.upload_btn{
-    background-color: var(--main-color);
+.nav_controlls .Signup,.upload_btn{
+    background-color:  var(--main-color);
     color: #f2fbea;
     border: 0.15rem solid var(--main-color);
-
 }
-.nav_controlls .LoginSigup:hover{
+.nav_controlls .Login:hover{
     border: 0.15rem solid var(--main-color);
     background-color: var(--main-color);
     color: #f2fbea;

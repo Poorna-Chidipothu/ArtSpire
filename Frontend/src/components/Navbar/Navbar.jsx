@@ -114,8 +114,8 @@ const Navbar = () => {
       <div className="nav_controlls">
         {!token
         ? <>
-            <button onClick={()=> {setPopUp(true);setCurrentState('login')}} className='LoginSigup'>Login</button>
-            <button onClick={()=> {setPopUp(true);setCurrentState('signup')}} className='LoginSigup'>Signup</button>
+            <button onClick={()=> {setPopUp(true);setCurrentState('login')}} className='Login'>Login</button>
+            <button onClick={()=> {setPopUp(true);setCurrentState('signup')}} className='Signup'>Signup</button>
           </>
         :
           <>

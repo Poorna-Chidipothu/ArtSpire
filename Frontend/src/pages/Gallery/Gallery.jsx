@@ -49,7 +49,6 @@ const Gallery = () => {
         },
       });
       const newImages = response.data.images;
-      console.log(newImages);
 
       if (newImages.length < 20) {
         setHasMore(false); // No more images to fetch
@@ -123,8 +122,6 @@ const Gallery = () => {
               }
             >
               
-              {/* <div className="gallery_container">  */}
-              {/* <ul className="images_list"> */}
               <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="my-masonry-grid"

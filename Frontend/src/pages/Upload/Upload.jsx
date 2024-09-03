@@ -40,6 +40,7 @@ const Upload = () => {
         processImages(newDropImagesArray);
     };
 
+    const MAX_FILE_SIZE = 10 * 1024 * 1024;
     const processImages = (newImagesArray) => {
         const newSelectedImages = [...selectedImages];
         let hasError = false;
@@ -51,6 +52,9 @@ const Upload = () => {
                 setError('Image is already uploaded or the name is already in the uploaded images.');
             } else if (!imageTypeRegex.test(file.name.split('.').pop())) {
                 setError(`Only ${acceptedFileFormats.join(', ')} are allowed.`);
+                hasError = true;
+            } else if (file.size > MAX_FILE_SIZE) {
+                setError(`File size too large. Maximum allowed size is ${MAX_FILE_SIZE / (1024 * 1024)}MB.`);
                 hasError = true;
             } else {
                 newSelectedImages.push({ file, tags: '' });
