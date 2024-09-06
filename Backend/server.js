@@ -11,7 +11,7 @@ import getRoute from "./routes/getRoute.js";
 import deleteRoute from "./routes/deleteRoute.js";
 import likeRoute from "./routes/likeRoute.js";
 import Image from "./models/imageModel.js";
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 import { generateBlurHash } from './utils/blurHashUtils.js';
 import axios from 'axios';
 import fs from 'fs';
@@ -57,8 +57,8 @@ app.use("/api/like", likeRoute)
 //       });
   
 //       await Image.updateMany(
-//         { likedBy: { $exists: false } },  // Match documents that don't have the likedBy field
-//         { $set: { likedBy: [] } }  // Add an empty likedBy array
+//         { }, // Match all documents
+//         { $set: { likes: [] } } // Set likes field to an empty array
 //       );
   
 //       console.log('All documents updated successfully.');

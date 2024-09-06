@@ -23,11 +23,11 @@ const Footer = () => {
                 <div className="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li onClick={()=>setMenuItem('about')}><Link to="/about">About Us <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
-                        <li onClick={()=>setMenuItem('gallery')}><Link to="/gallery">Gallery <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
-                        <li><Link to="/upload">Upload Your Art <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
-                        <li onClick={()=>setMenuItem('aigen')}><Link to="/ai-gen">AI Gen <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
-                        <li><Link to="/favorites">Favorites <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
+                        <li onClick={()=>{setMenuItem('about');localStorage.setItem('menu','gallery')}}><Link to="/about">About Us <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
+                        <li onClick={()=>{setMenuItem('gallery');localStorage.setItem('menu','gallery')}}><Link to="/gallery">Gallery <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
+                        <li onClick={()=>{localStorage.setItem('menu','')}}><Link to="/upload">Upload Your Art <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
+                        <li onClick={()=>{setMenuItem('aigen');localStorage.setItem('menu','gallery')}}><Link to="/ai-gen">AI Gen <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
+                        <li onClick={()=>{localStorage.setItem('menu','')}}><Link to="/favourites">Favourites <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
                         <li><Link to="/contact">Contact Us <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
                     </ul>
                 </div>

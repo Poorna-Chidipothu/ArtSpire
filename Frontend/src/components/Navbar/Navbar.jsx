@@ -129,8 +129,8 @@ const Navbar = () => {
               </div>
               <ul className="user_info_settings">
                 <li className="user_option"><span><i className="ri-user-settings-fill"></i></span> Profile</li>
-                <li className="user_option"><span><ion-icon name="heart-circle"></ion-icon></span> My Favorites</li>
-                <Link to='/my-uploads' className="user_option"><span><i className="uil uil-upload"></i></span> My Uploads</Link>
+                <Link to='/favourites' className="user_option" onClick={() => localStorage.setItem('menu','')}><span><ion-icon name="heart-circle"></ion-icon></span> My Favorites</Link>
+                <Link to='/my-uploads' className="user_option" onClick={() => localStorage.setItem('menu','')}><span><i className="uil uil-upload"></i></span> My Uploads</Link>
                 <li className="user_option logout" onClick={logout}><span><ion-icon name="log-out-outline"></ion-icon></span> Logout</li>
               </ul>
             </div>

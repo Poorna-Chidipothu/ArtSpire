@@ -61,6 +61,34 @@ const Gallery = () => {
     }
   };
 
+  const handleLike = async (imageId, isLiked) => {
+    try {
+      const response = await axios.post(
+        `${url}/api/like`, 
+        { imageId },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      // Update state with new like status and like count
+      setSomeImages((prevImages) =>
+        prevImages.map((image) =>
+          image._id === imageId
+            ? {
+                ...image,
+                isLiked: response.data.isLiked,
+              }
+            : image
+        )
+      );
+    } catch (error) {
+      console.error("Error liking image:", error.response || error.message);
+    }
+  };
+
   useEffect(() => {
     setPage(1); // Reset to page 1 on a new search
     setHasMore(true); // Reset hasMore on new search
@@ -150,11 +178,18 @@ const Gallery = () => {
                     <span className="img_like">
                       <ion-icon
                         name={image.isLiked ? "heart" : "heart-outline"}
-                        // onClick={() => handleLike(image._id,image.isLiked)}
+                        onClick={() => handleLike(image._id, image.isLiked)}
+                        style={{
+                          color: image.isLiked ? "red" : "black",
+                        }}
                       ></ion-icon>
                     </span>
                     <div className="image_content">
-                      <h3>{image.uploader}</h3>
+                      <span>
+                        <div className="img_holder">{image.uploader[0].toUpperCase()}</div>
+                        <h3>{image.uploader}</h3>
+                      </span>
+                      
                       <a
                         href={getDownloadUrl(image.url)}
                         download

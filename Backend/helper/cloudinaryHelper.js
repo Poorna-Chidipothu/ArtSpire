@@ -5,7 +5,7 @@ const uploadImageOnCloudinary = async (filePath, folderName) => {
         const result = await cloudinary.uploader.upload(filePath, {
             folder: folderName
         });
-        console.log('Uploaded to Cloudinary:', result);
+        // console.log('Uploaded to Cloudinary:', result);
 
         return result;
     } catch (error) {

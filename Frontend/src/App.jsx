@@ -11,6 +11,7 @@ import NotLoggedIn from './pages/NotLoggedIn/NotLoggedIn'
 import ScrollToTop from './components/ScrollToTop'
 import Upload from './pages/Upload/Upload'
 import Myuploads from './pages/Myuploads/Myuploads'
+import Favourites from './pages/Favourites/Favourites'
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path='/gallery' element={!token ? <NotLoggedIn/> : <Gallery/>}/>
         <Route path='/upload' element={!token ? <NotLoggedIn/> : <Upload/>}/>
         <Route path='/my-uploads' element={!token ? <NotLoggedIn/> : <Myuploads/>}/>
+        <Route path='/favourites' element={!token ? <NotLoggedIn/> : <Favourites/>}/>
       </Routes>
       <Footer/>
     </>

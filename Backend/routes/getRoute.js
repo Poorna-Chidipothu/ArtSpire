@@ -63,8 +63,7 @@ getRoute.get('/get-images', authMiddleware, async (req, res) => {
                 _id: image._id,
                 url: image.picture.picture_url,
                 uploader: user.name,
-                isLiked: image.likedBy.includes(userId),  // Pass this to the frontend
-                likes: image.likes, // Include like count for the uploader's page
+                isLiked: image.likes.includes(userId),
                 blurHash: image.blurHash,
             };
         }));
@@ -77,6 +76,22 @@ getRoute.get('/get-images', authMiddleware, async (req, res) => {
     } catch (error) {
         console.error('Error in get-images:', error.message);
         res.status(500).json({ success: false, message: 'Internal Server Error', error: error.toString() });
+    }    
+});
+
+getRoute.get('/fav-images',authMiddleware,async (req,res) => {
+    const userId = req.userId;
+    try{
+        const fav_images = await Image.find({likes:{ $in: userId }});
+        
+        res.status(200).json({
+            success: true,
+            images: fav_images,
+            message: "Favourite Images fetched successfully"
+            });
+
+    }catch(error){
+        console.log(error);
     }    
 });
 

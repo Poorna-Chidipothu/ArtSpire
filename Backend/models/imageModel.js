@@ -20,11 +20,7 @@ const imageSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  likes: {
-    type: Number,
-    default: 0,
-  },
-  likedBy: [{ 
+  likes: [{ 
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'User' 
   }],

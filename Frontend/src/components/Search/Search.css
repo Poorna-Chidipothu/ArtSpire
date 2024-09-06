@@ -41,13 +41,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    column-gap: 6px;
+    column-gap: 8px;
 }
+
 .search_box input{
     height: 100%;
     width: 84%;
     font-size: 20px;
-    padding: 10px;
+    padding-block: 10px;
     border: none;
     outline: none;
     background: none;
@@ -58,8 +59,10 @@
 .search_box ion-icon:nth-child(3){
     cursor: pointer;
 }
+
 .search_box button{
     margin: 5px;
+    margin-left: auto;
     padding-inline: 20px;
     height: calc(100% - 11px);
     background-color: #5db62c;
@@ -77,7 +80,13 @@
 }
 
 @media screen and (max-width : 767px){
- 
+    .search_wrapper .search_box{
+        width: 90%;
+    }
+
+    .srch_icon{
+        display: none;
+    }
     
     .search_box button span{
         display: none;

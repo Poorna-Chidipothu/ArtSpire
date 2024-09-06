@@ -254,14 +254,15 @@ nav .nav_items{
     .show_menu{
         left: 0;
         width: 70% !important;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
     
-    .nav_controlls .LoginSigup{
+    .nav_controlls .Login{
         border: 0.125rem solid rgba(24, 54, 13,.7);
         padding: 5px 30px;
         border-radius: 8px;
     }
-    .nav_controlls .LoginSigup:nth-of-type(2){
+    .nav_controlls .Signup{
         display: none;
     }
 

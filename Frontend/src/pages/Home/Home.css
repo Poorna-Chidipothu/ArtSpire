@@ -34,11 +34,11 @@
 .images_list img{
     width: 100%;
     height: auto;
-    transition: transform .3s ease;
+    /* transition: transform .3s ease; */
 }
-.images_list img:hover{
+/* .images_list img:hover{
     transform: scale(1.03);
-}
+} */
 .signup_msg{
     width: 90.2%;
     margin-top: 20px;

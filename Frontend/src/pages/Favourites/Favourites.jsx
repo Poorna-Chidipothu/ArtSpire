@@ -1,25 +1,16 @@
-import { useContext, useEffect, useState } from 'react'
-import './Myuploads.css';
-import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
+import './Favourites.css'
 import { StoreContext } from '../../context/storeContext';
+import axios from 'axios';
 
-
-const Myuploads = () => {
+const Favourites = () => {
     const { url,setAlertBox,setImgId,myImages,setMyImages } = useContext(StoreContext);
     const [loading,setLoading] = useState(true);
-    
-    
 
-    const handleDelClick = (imgId) => {
-      setAlertBox(true);
-      setImgId(imgId);
-    }
-    
-    
 
     useEffect(() => {
         const fetchMyUploads = async () => {
-            const response = await axios.get(`${url}/api/get-img/my-uploads`,
+            const response = await axios.get(`${url}/api/get-img/fav-images`,
                 {
                   headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -31,11 +22,11 @@ const Myuploads = () => {
         }
         fetchMyUploads();
     },[]);
+
   return (
-    <>
-        <div className="myuploads_container">
-            <h2>My Uploads </h2>
-            {loading 
+    <section className="favourites">
+        <h2>Favourites</h2>
+        {loading 
               ?
               <span className='load'>
                 <svg width="319" height="307" viewBox="0 0 319 307" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,17 +38,16 @@ const Myuploads = () => {
                   {myImages.map((image,index)=>(
                     <li key={index} className="image">
                       <img src={image.picture.picture_url}/>
-                      <span className="img_delete" onClick={()=>handleDelClick(image._id)}><ion-icon name="trash" ></ion-icon></span>
+                      {/* <span className="img_delete" onClick={()=>handleDelClick(image._id)}><ion-icon name="trash" ></ion-icon></span>
                       <span className='likes'><ion-icon name="heart"></ion-icon> {image.likes.length}</span>
-                      <a href={image.picture.picture_url} download className="img_dwn"><ion-icon name="arrow-down-outline"></ion-icon></a>
+                      <a href={image.picture.picture_url} download className="img_dwn"><ion-icon name="arrow-down-outline"></ion-icon></a> */}
                     </li>
                   ))}
                 </ul>
-            
             }
-        </div>
-    </>
+        
+    </section>
   )
 }
 
-export default Myuploads
+export default Favourites

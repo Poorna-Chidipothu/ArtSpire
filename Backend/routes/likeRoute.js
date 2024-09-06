@@ -4,8 +4,8 @@ import Image from'../models/imageModel.js';
 
 const likeRoute = express.Router();
 
-likeRoute.post('/:imgId', authMiddleware, async (req, res) => {
-  const imageId = req.params.imgId;
+likeRoute.post('/', authMiddleware, async (req, res) => {
+  const { imageId } = req.body;
   const userId = req.userId;
   
   try {
@@ -16,22 +16,21 @@ likeRoute.post('/:imgId', authMiddleware, async (req, res) => {
     }
 
     // Check if the user has already liked the image.
-    const alreadyLiked = image.likedBy.includes(userId);
+    const isLiked = image.likes.includes(userId);
 
-    if (alreadyLiked) {
-      image.likedBy.pull(userId);  // Remove user from likedBy array
-      image.likes -= 1;
+    // Toggle like/unlike
+    if (isLiked) {
+      image.likes.pull(userId); // Unlike (remove userId from likes array)
     } else {
-      image.likedBy.push(userId);  // Add user to likedBy array
-      image.likes += 1;
+      image.likes.push(userId); // Like (add userId to likes array)
     }
 
     await image.save();
 
     res.status(200).json({
-      message: alreadyLiked ? 'Image unliked' : 'Image liked',
-      likes: image.likes,
-      likedBy: image.likedBy,
+      success: true,
+      isLiked: !isLiked,
+      likesCount: image.likes.length,
     });
 
   } catch (error) {

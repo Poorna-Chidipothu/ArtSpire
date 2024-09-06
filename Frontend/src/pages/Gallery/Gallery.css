@@ -90,8 +90,14 @@
 .image-container:hover .image_content{
   bottom: 10px;
 }
+.image-container .image_content span{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+}
 
-.img_dwn {
+.img_dwn,.img_holder,.img_like {
   background-color: #ffffff;
   border-radius: 50%;
   height: 33px;
@@ -101,19 +107,23 @@
   justify-content: center;
   color: #18360d;
   cursor: pointer;
+  font-size: 20px;
 }
-.img_like,.img_close {
+.img_holder{
+  background-color: rgb(105, 134, 57);
+  color: #fff;
+  font-weight: 650;
+}
+.img_like,.img_delete {
   position: absolute;
   right: 10px;
   top: 10px;
-  background-color: #ffffff;
-  cursor: pointer;
   opacity: 0;
   pointer-events: none;
   transition: opacity .3s ease-in-out;
 }
 
-.image-container img:hover + .img_like,.image img:hover + .img_close{
+.image-container:hover .img_like,.image:hover .img_delete{
   opacity: 1;
   pointer-events: all;
 }
@@ -161,16 +171,24 @@
 
 
 @media screen and (max-width : 767px){
-  .image-container .image_content{
-    bottom: 10px;
+  .image-container .image_content,
+    .image-container:hover .image_content {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0;
+    padding-block: 15px;
   }
-  .img_like,.img_close{
+  .image-container .image_content h3{
+    font-weight: 530;
+  }
+  .img_like,.img_delete{
     opacity: 1;
     pointer-events: all;
     width: 30px;
     height: 30px;
   }
-  .img_dwn{
+  .img_dwn,.img_holder{
     width: 30px;
     height: 30px;
   }
