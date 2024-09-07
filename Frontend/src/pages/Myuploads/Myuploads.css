@@ -101,9 +101,8 @@
 
     .myuploads_container .images_list .image .img_dwn{
         opacity: 1;
-        height: 25px;
-        width: 25px;
-        border-radius: 3px;
+        height: 30px;
+        width: 30px;
         padding: 5px;
         font-size: 18px;
     }

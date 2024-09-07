@@ -52,7 +52,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  background-color: #e0e0e0;/* Fallback for blur effect */
+  background-color: #d0f3b6;/* Fallback for blur effect */
   margin-bottom: 16px; 
 }
 
@@ -171,6 +171,10 @@
 
 
 @media screen and (max-width : 767px){
+  .gallery{
+    max-width: 95%;
+  }
+
   .image-container .image_content,
     .image-container:hover .image_content {
     left: 0;
