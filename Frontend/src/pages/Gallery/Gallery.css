@@ -152,7 +152,7 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 160px);
   /* animation: fadein 10s ease-in; */
 }
 .not__found img{

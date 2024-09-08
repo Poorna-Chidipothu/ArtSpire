@@ -102,21 +102,22 @@ const Gallery = () => {
   useEffect(() => {
     if (searchQuery) {
       setIsSearchPerformed(true);
+      window.scrollTo(0,0);
     }
   }, [searchQuery]);
 
   return (
     <>
       <section className="gallery">
-        {someImages.length > 0 ? 
-          <>
-            {searchQuery 
+            {searchQuery && isSearchPerformed
             ? 
               <div className="search_head">
                 <span onClick={()=>setSearchQuery('')}><ion-icon name="chevron-back-outline"></ion-icon></span>
                 <p>Search results for <b>{searchQuery}</b></p>
               </div> 
             : null}
+          {someImages.length > 0 ? 
+          <>
             <InfiniteScroll
               dataLength={someImages.length}
               next={() => setPage(page + 1)}

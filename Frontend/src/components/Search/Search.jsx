@@ -18,6 +18,7 @@ const Search = ({setSearchOpen}) => {
         handleSearch(event);
       }
     };
+
   return (
     <div className="search_wrapper">
         <div className="search_close" onClick={() => setSearchOpen(false)}>

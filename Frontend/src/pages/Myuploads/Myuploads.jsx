@@ -14,6 +14,14 @@ const Myuploads = () => {
       setAlertBox(true);
       setImgId(imgId);
     }
+
+    const getDownloadUrl = (url) => {
+      const cloudinaryBase = "res.cloudinary.com";
+      if (url.includes(cloudinaryBase)) {
+        return url.replace("/upload/", "/upload/fl_attachment/");
+      }
+      return url;
+    };
     
     
 
@@ -49,7 +57,7 @@ const Myuploads = () => {
                       <img src={image.picture.picture_url}/>
                       <span className="img_delete" onClick={()=>handleDelClick(image._id)}><ion-icon name="trash" ></ion-icon></span>
                       <span className='likes'><ion-icon name="heart"></ion-icon> {image.likes.length}</span>
-                      <a href={image.picture.picture_url} download className="img_dwn"><ion-icon name="arrow-down-outline"></ion-icon></a>
+                      <a href={getDownloadUrl(image.picture.picture_url)} download className="img_dwn"><ion-icon name="arrow-down-outline"></ion-icon></a>
                     </li>
                   ))}
                 </ul>
