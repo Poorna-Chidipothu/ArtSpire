@@ -53,62 +53,12 @@ const addImageController = async (req, res) => {
                 continue; // Skip this image and proceed with the next
             }
 
-            // let retries = 3;
-            // while (retries > 0) {
-            //     try {
-            //         await fs.unlink(picture.path);
-            //         console.log(`Successfully deleted ${picture.path}`);
-            //         break;
-            //     } catch (err) {
-            //         if (err.code === 'EPERM') {
-            //             retries--;
-            //             console.error(`Retry deleting ${picture.path}, attempts left: ${retries}`);
-            //             await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
-            //         } else {
-            //             console.error(`Failed to delete the file from server`, err);
-            //             break;
-            //         }
-            //     }
-            // }
-
-            // const result = await uploadImageOnCloudinary(picture.path, 'Images');
-            // // Generate BlurHash
-            // const blurHash = await generateBlurHash(picture.path);
-
-            // const newImage = new Image({
-            //     picture: {
-            //         picture_url: result.secure_url,
-            //         public_id: result.public_id,
-            //     },
-            //     uploadedBy: userId,
-            //     tags: imageTags ? imageTags.split(',') : [],
-            //     hash: imageHash,
-            //     blurHash: blurHash,
-            // });
-
-            // await newImage.save();
-            // uploadedImages.push(newImage);
-
-            // // Ensure file is closed before attempting to delete it
-            // fs.closeSync(fs.openSync(picture.path, 'r'));
-
+            
             // Retry mechanism for file deletion
-            let retries = 3;
-            while (retries > 0) {
-                try {
-                    await fs.promises.unlink(picture.path);
-                    console.log(`Successfully deleted ${picture.path}`);
-                    break;
-                } catch (err) {
-                    if (err.code === 'EPERM' && retries > 0) {
-                        retries--;
-                        console.error(`Retry deleting ${picture.path}, attempts left: ${retries}`);
-                        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for 1 second before retrying
-                    } else {
-                        console.error(`Failed to delete the file from server`, err);
-                        break;
-                    }
-                }
+            try {
+                await fs.promises.unlink(picture.path);
+            } catch (error) {
+                console.error(`Failed to delete the file from server`, error);
             }
         }
         // res.status(201).json({ success: true, images: uploadedImages });

@@ -15,6 +15,7 @@ const Navbar = () => {
   const [showMenu,setShowMenu] = useState('');
   const [searchOpen, setSearchOpen] = useState(false); 
   const [headStyle,setHeadStyle] = useState({
+    backgroundColor: 'transparent',
     boxShadow: 'none'
   });
   
@@ -22,12 +23,21 @@ const Navbar = () => {
     const handleScroll = () => {
       if (window.scrollY > 200) {
         setHeadStyle({ 
+          backgroundColor: '#f2fbea',
           boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
         });
       }else{
         setHeadStyle({
+          backgroundColor: '#f2fbea',
           boxShadow: 'none'
         });
+      }
+
+      if (localStorage.getItem('menu') === 'home' && window.scrollY < 200) {
+        setHeadStyle({
+          backgroundColor: 'transparent',
+          boxShadow: 'none'
+        })
       }
     }
     window.addEventListener('scroll',handleScroll);
