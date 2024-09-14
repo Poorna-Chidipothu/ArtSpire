@@ -92,7 +92,7 @@
     aspect-ratio: 1 / 1;
     overflow: hidden;
     border-radius: 10px;
-    background-color: #d7d8d6;
+    background-color: #d0f3b6;
 }
 
 .image_card:not(.load):hover .img_like,.image_card:not(.load):hover .img_dwn{
@@ -114,8 +114,14 @@
 }
 
 .image_card img{
+    display: block;
     width: 100%;
-    transition: transform .3s ease;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.image_card img.loaded {
+    opacity: 1;
 }
 .load{
     display: flex;

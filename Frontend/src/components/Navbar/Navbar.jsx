@@ -11,7 +11,7 @@ import Search from '../Search/Search';
 
 
 const Navbar = () => {
-  const {popUp,setPopUp,setCurrentState,menuItem,url,setMenuItem,token,setToken,username,setUsername,alertBox,setAlertBox,imgId,myImages,setMyImages,setImgId} = useContext(StoreContext);
+  const {popUp,setPopUp,setCurrentState,url,setMenuItem,token,setToken,username,setUsername,alertBox,setAlertBox,imgId,myImages,setMyImages} = useContext(StoreContext);
   const [showMenu,setShowMenu] = useState('');
   const [searchOpen, setSearchOpen] = useState(false); 
   const [headStyle,setHeadStyle] = useState({
@@ -66,6 +66,7 @@ const Navbar = () => {
     localStorage.removeItem('token');
     setToken('');
     localStorage.removeItem('name');
+    localStorage.removeItem('email');
     setUsername('');
     navigate('/');
     
@@ -138,7 +139,7 @@ const Navbar = () => {
                 <span><ion-icon name="chevron-down-outline"></ion-icon></span>
               </div>
               <ul className="user_info_settings">
-                <li className="user_option"><span><i className="ri-user-settings-fill"></i></span> Profile</li>
+                <Link to='/profile' className="user_option"><span><i className="ri-user-settings-fill"></i></span> Profile</Link>
                 <Link to='/favourites' className="user_option" onClick={() => localStorage.setItem('menu','')}><span><ion-icon name="heart-circle"></ion-icon></span> My Favorites</Link>
                 <Link to='/my-uploads' className="user_option" onClick={() => localStorage.setItem('menu','')}><span><i className="uil uil-upload"></i></span> My Uploads</Link>
                 <li className="user_option logout" onClick={logout}><span><ion-icon name="log-out-outline"></ion-icon></span> Logout</li>

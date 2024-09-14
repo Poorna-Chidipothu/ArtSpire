@@ -95,7 +95,15 @@
   align-items: center;
   justify-content: flex-start;
   gap: 15px;
+  max-width: 80%;
 }
+.image-container .image_content h3{
+  max-width: 80%;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
 .img_dwn,.img_holder,.img_like {
   background-color: #ffffff;

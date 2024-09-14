@@ -7,24 +7,24 @@
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(5px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   z-index: 30;
 }
 
 .wrapper .container {
-  position: absolute;
+  position: relative;
   max-width: 400px;
   width: 100%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 100;
   background-color: #f2fbea;
   padding: 35px;
   border-radius: 12px;
   box-shadow: 0 0 100px rgba(255,255,255,0.3);
   transition: all 0.5s;
+  animation: slideDownWithOpacity .4s ease;
 }
 
 .container .form_close {
@@ -46,7 +46,8 @@
 
 .input_box {
   position: relative;
-  margin-top: 30px;
+  margin-top: 27px;
+  margin-bottom: 6px;
   width: 100%;
   height: 40px;
 }
@@ -79,13 +80,15 @@
 
 
 .input_box .email,
-.input_box .password {
+.input_box .password,
+.input_box .otp {
   left: 0;
   color: #18360d;
 }
 
 .input_box input:focus ~ .email,
-.input_box input:focus ~ .password {
+.input_box input:focus ~ .password,
+.input_box input:focus ~ .otp {
   color: var(--main-color);
 }
 
@@ -95,7 +98,9 @@
   cursor: pointer;
   font-size: 18px;
 }
-
+.forget_pass{
+  padding-top: 15px;
+}
 .option_field {
   display: flex;
   align-items: center;
@@ -129,7 +134,7 @@
   color: #18360d;
 }
 
-.container .button {
+.container .button,.forgot_container .button {
   width: 100%;
   padding: 7px;
   cursor: pointer;

@@ -28,17 +28,21 @@
     display: flex;
     cursor: pointer;
     break-inside: avoid;
-    background-color: #cdcecd;
+    background-color: #d0f3b6;
 }
 
-.images_list img{
+.images_list img {
+    display: block;
     width: 100%;
-    height: auto;
-    /* transition: transform .3s ease; */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
-/* .images_list img:hover{
-    transform: scale(1.03);
-} */
+
+.images_list img.loaded {
+    opacity: 1;
+}
+
+
 .signup_msg{
     width: 90.2%;
     margin-top: 20px;

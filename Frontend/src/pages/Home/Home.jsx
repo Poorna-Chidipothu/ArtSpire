@@ -9,6 +9,11 @@ const Home = () => {
   const [allImages,setAllImages] = useState([]);
   const {url,setPopUp,setCurrentState,setMenuItem,token} = useContext(StoreContext);
   const [loading,setLoading] = useState(false);
+  const [loadedImages, setLoadedImages] = useState({});
+
+  const handleImageLoad = (index) => {
+    setLoadedImages((prev) => ({ ...prev, [index]: true }));
+  };
 
   useEffect(()=>{
     const fetchHomeImages = async()=> {
@@ -44,7 +49,11 @@ const Home = () => {
               <ul className="images_list">
                   {allImages.map((item,index)=>(
                     <li className="image" key={index}>
-                      <img src={item.picture.picture_url}/>
+                      <img src={item.picture.picture_url}
+                        onLoad={() => handleImageLoad(index)}
+                        className={loadedImages[index] ? 'loaded' : ''}
+                        loading="lazy"
+                      />
                     </li>
                   ))}
               </ul>

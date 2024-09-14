@@ -12,6 +12,8 @@ import ScrollToTop from './components/ScrollToTop'
 import Upload from './pages/Upload/Upload'
 import Myuploads from './pages/Myuploads/Myuploads'
 import Favourites from './pages/Favourites/Favourites'
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
+import Profile from './pages/Profile/Profile'
 
 
 function App() {
@@ -28,8 +30,12 @@ function App() {
         <Route path='/ai-gen' element={!token ? <NotLoggedIn/> : <AiGen/>}/>
         <Route path='/gallery' element={!token ? <NotLoggedIn/> : <Gallery/>}/>
         <Route path='/upload' element={!token ? <NotLoggedIn/> : <Upload/>}/>
-        <Route path='/my-uploads' element={!token ? <NotLoggedIn/> : <Myuploads/>}/>
+        <Route path='/profile' element={!token ? <NotLoggedIn/> : <Profile/>}/>
         <Route path='/favourites' element={!token ? <NotLoggedIn/> : <Favourites/>}/>
+        <Route path='/my-uploads' element={!token ? <NotLoggedIn/> : <Myuploads/>}/>
+        <Route path='/forgot-password' element={<ForgotPassword/>}/>
+        <Route path='/change-password' element={<ForgotPassword/>}/>
+
       </Routes>
       <Footer/>
     </>

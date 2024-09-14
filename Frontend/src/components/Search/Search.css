@@ -33,7 +33,7 @@
     padding-left: 15px;
     background-color: #f2fbea;
     border-radius: 10px;
-    animation: slide .3s ease;
+    animation: slideDownWithOpacity .3s ease;
 }
 
 .search_box form{

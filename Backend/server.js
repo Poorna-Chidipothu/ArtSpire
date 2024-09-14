@@ -18,6 +18,7 @@ import fs from 'fs';
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import UserModel from "./models/userModel.js";
 
 // // Define __dirname for ES modules
 // const __filename = fileURLToPath(import.meta.url);
@@ -41,7 +42,7 @@ connectDB();
 
 
 // api Endpoints
-app.use("/api/user",userRouter)
+app.use("/api/auth",userRouter)
 app.use("/api/upload",uploadRoute)
 app.use("/api/ai-gen",aigenRouter)
 app.use("/api/get-img",getRoute)
@@ -72,32 +73,17 @@ app.use("/api/like", likeRoute)
 //   updateExistingDocuments();
 
 // const updateExistingImagesWithBlurHash = async () => {
-//     const images = await Image.find({ blurHash: { $exists: false } });
+//     await UserModel.updateMany(
+//         { otp: { $exists: true } }, // Only update documents where `otp` field does not exist
+//         {
+//             $unset: {
+//                 otp: '', // Default value for the new field
+//                 otpExpires: '' // Default value for the new field
+//             }
+//         }
+//     );
 
-//     for (const image of images) {
-//         const imagePath = path.join(__dirname, 'temp', `${image._id}.jpg`);
-//         const writer = fs.createWriteStream(imagePath);
-
-//         const response = await axios({
-//             url: image.picture.picture_url,
-//             method: 'GET',
-//             responseType: 'stream'
-//         });
-
-//         response.data.pipe(writer);
-
-//         writer.on('finish', async () => {
-//             const blurHash = await generateBlurHash(imagePath);
-//             await Image.updateOne({ _id: image._id }, { blurHash: blurHash });
-//             fs.unlinkSync(imagePath);
-//         });
-
-//         writer.on('error', (error) => {
-//             console.error(`Error processing image ${image._id}:`, error);
-//         });
-//     }
-
-//     console.log('All images processed.');
+//     console.log("Schema updated and new fields added to existing documents.");
 // };
 
 // updateExistingImagesWithBlurHash();

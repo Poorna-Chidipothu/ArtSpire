@@ -6,6 +6,11 @@ import axios from 'axios';
 const Favourites = () => {
     const { url,setAlertBox,setImgId,myImages,setMyImages } = useContext(StoreContext);
     const [loading,setLoading] = useState(true);
+    const [loadedImages, setLoadedImages] = useState({});
+
+    const handleImageLoad = (index) => {
+      setLoadedImages((prev) => ({ ...prev, [index]: true }));
+    };
 
 
     useEffect(() => {
@@ -37,7 +42,11 @@ const Favourites = () => {
                 <ul className="images_list"> 
                   {myImages.map((image,index)=>(
                     <li key={index} className="image">
-                      <img src={image.picture.picture_url}/>
+                      <img src={image.picture.picture_url}
+                         onLoad={() => handleImageLoad(index)}
+                         className={loadedImages[index] ? 'loaded' : ''}
+                         loading="lazy"
+                      />
                       {/* <span className="img_delete" onClick={()=>handleDelClick(image._id)}><ion-icon name="trash" ></ion-icon></span>
                       <span className='likes'><ion-icon name="heart"></ion-icon> {image.likes.length}</span>
                       <a href={image.picture.picture_url} download className="img_dwn"><ion-icon name="arrow-down-outline"></ion-icon></a> */}

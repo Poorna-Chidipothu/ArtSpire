@@ -15,6 +15,12 @@ const AiGen = () => {
   const [genImg,setGenImg] = useState([]);
   const [storedAiImages,setStoredAiImages] = useState([]);
 
+  const [loadedImages, setLoadedImages] = useState({});
+
+  const handleImageLoad = (index) => {
+    setLoadedImages((prev) => ({ ...prev, [index]: true }));
+  };
+
   const genAiImages = async (uPrompt, imgCount) => {
     try {
       const response = await axios.post(`${url}/api/ai-gen/generate-images`, 
@@ -64,13 +70,11 @@ const AiGen = () => {
         } catch (error) {
           console.error('Error fetching image status:', error);
           clearInterval(interval);  // Clear interval on error
-          // setLoading(false);
         }
       }, 5000);
 
     } catch (error) {
       console.error('Error generating images:', error);
-      // setLoading(false);
     }
   };
 
@@ -82,7 +86,6 @@ const AiGen = () => {
     
     setUserPrompt(prompt);
     setImgQuantity(imgQuant);
-    // setLoading(true);
     
 
     const imgCards = Array.from({ length: imgQuant }, (_, index) => (
@@ -107,7 +110,6 @@ const AiGen = () => {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
-      // console.log(result.data.images);
       setStoredAiImages(result.data.images);
   }
   fetchAIImages();
@@ -142,11 +144,15 @@ const AiGen = () => {
         {storedAiImages.length > 0 || genImg.length > 0
           ?
             <>
-              {storedAiImages.length > 0 ? <h2>Your creations</h2> : <></>}
+              {storedAiImages.length > 0 ? <h2>Your creations</h2> : <></>} 
               <div className="ai-gen_images">
-                {storedAiImages.reverse().map((item,index)=>(
+                {storedAiImages.map((item,index)=>(
                   <div className="image_card" key={index}>
-                    <img src={item.aigen_picture_url}/>
+                    <img src={item.aigen_picture_url}
+                       onLoad={() => handleImageLoad(index)}
+                       className={loadedImages[index] ? 'loaded' : ''}
+                       loading="lazy"
+                    />
                     {/* <span className="img_like"><ion-icon name="heart-outline"></ion-icon></span> */}
                     <a download href={item.aigen_picture_url}><span className="img_dwn"><ion-icon name="arrow-down-outline"></ion-icon></span></a>
                   </div>

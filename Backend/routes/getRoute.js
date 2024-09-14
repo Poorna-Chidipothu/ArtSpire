@@ -98,7 +98,7 @@ getRoute.get('/fav-images',authMiddleware,async (req,res) => {
 getRoute.get('/get-aigen-images',authMiddleware,async (req,res) => {
     const userId = req.userId;
     try{
-        const aiimages = await aiGenImageModel.find({createdBy: userId});
+        const aiimages = await aiGenImageModel.find({createdBy: userId}).sort({ createdAt : -1 });
         
         res.status(200).json({
             success: true,
@@ -110,6 +110,23 @@ getRoute.get('/get-aigen-images',authMiddleware,async (req,res) => {
     }catch(error){
         console.log(error);
     }
-})
+});
+
+getRoute.get('/random-image',async (req,res) => {
+    try{
+        const RandomImg = await Image.aggregate([{ $sample: { size: 1 } }]);
+        const user = await UserModel.findById(RandomImg[0].uploadedBy);
+        res.status(200).json({
+            success: true,
+            RandomImg: {
+                url: RandomImg[0].picture.picture_url,
+                uploader: user.name
+            },
+            message: "Random Image fetched successfully"
+            });
+    }catch(error){
+        console.log(error);
+    }
+});
 
 export default getRoute;

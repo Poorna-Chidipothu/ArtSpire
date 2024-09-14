@@ -9,6 +9,8 @@ const userSchema = new mongoose.Schema({
     // role: { type: String, enum: ['admin', 'artist', 'viewer'], default: 'viewer' },
     // bio: { type: String },
     dateJoined: { type: Date, default: Date.now },
+    otp: { type:String },
+    otpExpires: { type: Date },
     // lastLogin: { type: Date },
     // favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Artwork' }], // Assuming there's an Artwork schema
     // settings: {

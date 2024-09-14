@@ -158,7 +158,7 @@ const Gallery = () => {
               >
                 {someImages.map((image, index) => (
                   <div key={index} className="image-container">
-                    {!loadedImages[index] && image.blurHash && (
+                    {/* {!loadedImages[index] && image.blurHash && (
                       <Blurhash
                         hash={image.blurHash}
                         width="100%" // Adjust the width as per your design
@@ -168,7 +168,7 @@ const Gallery = () => {
                         punch={1}
                         className="blurhash-placeholder"
                       />
-                    )}
+                    )} */}
                     <img
                       src={image.url}
                       alt="img"
@@ -176,7 +176,7 @@ const Gallery = () => {
                       className={loadedImages[index] ? 'loaded' : ''}
                       loading="lazy"
                     />
-                    <span className="img_like">
+                    <span className="img_like" title="Like Image">
                       <ion-icon
                         name={image.isLiked ? "heart" : "heart-outline"}
                         onClick={() => handleLike(image._id, image.isLiked)}
@@ -195,6 +195,7 @@ const Gallery = () => {
                         href={getDownloadUrl(image.url)}
                         download
                         className="img_dwn"
+                        title="Download Image"
                       >
                         <ion-icon name="arrow-down-outline"></ion-icon>
                       </a>
@@ -212,7 +213,7 @@ const Gallery = () => {
               </div>
             ):
               <span className="load" style={{marginTop:'100px'}}>
-                <svg style={{width:'40px',height:'40px'}}
+                <svg style={{width:'37px',height:'37px'}}
                   width="319"
                   height="307"
                   viewBox="0 0 319 307"

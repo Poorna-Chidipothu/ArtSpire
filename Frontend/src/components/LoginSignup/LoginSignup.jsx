@@ -1,93 +1,163 @@
 // import React from 'react'
-import { useState } from 'react'
-import './LoginSignup.css'
-import { useContext } from 'react'
-import { StoreContext } from '../../context/storeContext'
-import axios from "axios"
+import { useState } from 'react';
+import './LoginSignup.css';
+import { useContext } from 'react';
+import { StoreContext } from '../../context/storeContext';
+import axios from 'axios';
+import Password from '../Password/Password';
+import { Link } from 'react-router-dom';
 
 const LoginSignup = () => {
+    const { setPopUp, currentState, setCurrentState, url, setToken, setUsername } = useContext(StoreContext);
 
-    const {setPopUp,currentState,setCurrentState,url,setToken,setUsername} = useContext(StoreContext);
-    
-    const [data,setData] = useState({
-        name:"",
-        email:"",
-        password:""
-    })
+    // State for form data
+    const [data, setData] = useState({
+        name: '',
+        email: '',
+        password: '',
+    });
+    const [error, setError] = useState(null); // Initialize error as null
 
-    const onChangeHandler = (e)=>{
+    // Handler for input changes
+    const onChangeHandler = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        setData(data=>({...data,[name]:value}));
-    }
+        setData((data) => ({ ...data, [name]: value }));
+    };
+    localStorage.setItem('email', data.email);
 
+    // Handler for form submit
     const onLogin = async (e) => {
         e.preventDefault();
         let newUrl = url;
-        if(currentState === 'login'){
-            newUrl += '/api/user/login';
-        }
-        else{
-            newUrl += '/api/user/register';
-        }
-        
-        const response = await axios.post(newUrl,data);
 
-        if(response.data.success){
-            setToken(response.data.token);
-            localStorage.setItem('token',response.data.token);
-            setPopUp(false);
-            setUsername(response.data.name);
-            localStorage.setItem('name',response.data.name);
+        // Determine if it's login or signup
+        if (currentState === 'login') {
+            newUrl += '/api/auth/login';
+        } else {
+            newUrl += '/api/auth/register';
         }
-        else{
-            alert(response.data.message);
-        }
-    }
-    
 
-  return (
-    <div className="wrapper">
-        <div className="container">
-            <i onClick={()=> setPopUp(false)} className="uil uil-times-square form_close" id="reg_cls"></i>
-            <div className="form">
-                <form onSubmit={onLogin} className="rform" method="post">
-                    <h2>{currentState==='signup' ? 'Signup' : 'Login'}</h2>
-                    {currentState==='signup' 
-                        ? <div className="input_box">
-                            <input type="text" name="name" onChange={onChangeHandler} value={data.name} id="name-Input" placeholder="Enter Your Name" required />
-                            <i className="uil uil-user email"></i>
+        setError(null); // Clear previous error
+
+        try {
+            // Make the API request
+            const response = await axios.post(newUrl, data);
+
+            // Check if the response was successful
+            if (response.data.success) {
+                // Set token and username
+                setToken(response.data.token);
+                localStorage.setItem('token', response.data.token);
+                setPopUp(false);
+                setUsername(response.data.name);
+                localStorage.setItem('name', response.data.name);
+
+                // Clear form data on successful login/signup
+                setData({
+                    name: '',
+                    email: '',
+                    password: '',
+                });
+            } else {
+                // Handle case where success is false
+                setError(response.data.message || 'An error occurred');
+            }
+        } catch (err) {
+            // Handle errors
+            if (err.response && err.response.data && err.response.data.message) {
+                setError(err.response.data.message);
+            } else {
+                setError('An unexpected error occurred');
+            }
+        }
+    };
+
+    return (
+        <div className="wrapper">
+            {error && (
+                <div className="msg">
+                    <i className="uis uis-times-circle error"></i>
+                    <p>{error}</p>
+                </div>
+            )}
+
+            <div className="container">
+                <i onClick={() => setPopUp(false)} className="uis uis-times-circle form_close" id="reg_cls"></i>
+
+                <div className="form">
+                    <form onSubmit={onLogin} className="rform" method="post">
+                        <h2>{currentState === 'signup' ? 'Signup' : 'Login'}</h2>
+
+                        {/* Name input, shown only for signup */}
+                        {currentState === 'signup' ? (
+                            <div className="input_box">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    onChange={onChangeHandler}
+                                    value={data.name}
+                                    id="name-Input"
+                                    placeholder="Enter Your Name"
+                                    required
+                                />
+                                <i className="uil uil-user email"></i>
+                            </div>
+                        ) : null}
+
+                        {/* Email input */}
+                        <div className="input_box">
+                            <input
+                                type="email"
+                                name="email"
+                                onChange={onChangeHandler}
+                                value={data.email}
+                                placeholder="Enter Your Email"
+                                required
+                            />
+                            <i className="uil uil-envelope-alt email"></i>
                         </div>
-                        :<></>    
-                    }
-                    
-                    <div className="input_box">
-                        <input type="email" name="email" onChange={onChangeHandler} value={data.email} placeholder="Enter Your email" required />
-                        <i className="uil uil-envelope-alt email"></i>
-                    </div>
 
-                    <div className="input_box">
-                        <input type="password" name="password" onChange={onChangeHandler} value={data.password} placeholder="Enter your password" required />
-                        <i className="uil uil-lock password"></i>
-                        <i className="uil uil-eye-slash pw_hide"></i>
-                    </div>
+                        {/* Password component */}
+                        <Password onChangeHandler={onChangeHandler} pass={data.password} placeholder="Enter your password" />
 
-                    <button type="submit" className="button">{currentState==='signup' ? 'Create Accout' : 'Login Now'}</button>
-                    {currentState==='signup' 
-                    ? <div className="login_singnup">
-                        Already Have An Account? <span onClick={()=> setCurrentState('login')}>Login</span>
+                        {/* Forgot password link, only for login */}
+                        {currentState === 'login' ? (
+                            <Link to="/forgot-password" className="forget_pass" onClick={() => setPopUp(false)}>
+                                Forgot password?
+                            </Link>
+                        ) : null}
 
-                      </div>
-                    : <div className="login_singnup">
-                        Don&apos;t Have An Account? <span onClick={()=> setCurrentState('signup')}>SignUp</span>
-                      </div>
-                    }
-                    
-                </form>
+                        {/* Submit button */}
+                        <button type="submit" className="button">
+                            {currentState === 'signup' ? 'Create Account' : 'Login Now'}
+                        </button>
+
+                        {/* Switch between login/signup */}
+                        {currentState === 'signup' ? (
+                            <div className="login_singnup">
+                                Already Have An Account? <span 
+                                                            onClick={() => {
+                                                                setCurrentState('login');
+                                                                setError(null);
+                                                                setData({
+                                                                    name: '',
+                                                                    email: '',
+                                                                    password: '',
+                                                                });
+                                                        }}>
+                                                        Login</span>
+                            </div>
+                        ) : (
+                            <div className="login_singnup">
+                                Don't Have An Account? <span onClick={() => {setCurrentState('signup');setError(null)}}>SignUp</span>
+                            </div>
+                        )}
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-  )
-}
+    );
+};
 
-export default LoginSignup
+export default LoginSignup;
