@@ -6,6 +6,7 @@
     width: 100%;
     background-image: url(../../assets/hero-background_com.png);
     background-size: cover;
+    /* mix-blend-mode:; */
 }
 .hero .content_container{
     width: 50%;

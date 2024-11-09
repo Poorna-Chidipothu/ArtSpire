@@ -7,13 +7,29 @@
 }
 :root{
   --main-color: #5db62c;
+  --background-color: #f2fbea;
+  --secondary-background-color: #e2fcce;
+  --primary-text-color: #18360d;
+  --secondary-text-color: #5db62c;
+  --loading-color: #d0f3b6;
 }
 html{
   scroll-behavior: smooth;
 }
 body{
-  background-color: #f2fbea;
+  background-color: var(--background-color);
   position: relative;
+}
+body.dark_mode{
+  /* --background-color: #292929;
+  --primary-text-color: #f2fbea;
+  --secondary-text-color: #5db62c; */
+  --main-color: #7acc47;        
+  --background-color: #1a1f17; 
+  --secondary-background-color: #12290a; 
+  --primary-text-color: #f2fbea; 
+  --secondary-text-color: #7cd14a;
+  --loading-color: #325617;
 }
 body.popup{
   overflow: hidden;
@@ -61,5 +77,14 @@ a{
   }
   to{
     opacity: 1;
+  }
+}
+
+@keyframes img-loading {
+  0%,100%{
+    background-color: #e2fcce;
+  }
+  50%{
+    background-color: #71c531;
   }
 }

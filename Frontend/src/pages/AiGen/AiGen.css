@@ -92,7 +92,8 @@
     aspect-ratio: 1 / 1;
     overflow: hidden;
     border-radius: 10px;
-    background-color: #d0f3b6;
+    background-color:  var(--loading-color);;
+    border: 0.0015rem solid #5f5f5f;
 }
 
 .image_card:not(.load):hover .img_like,.image_card:not(.load):hover .img_dwn{
@@ -131,7 +132,6 @@
 .load img{
     height: 15%;
     width: 15%;
-    animation: load 1.5s linear infinite;
 }
 
 .load .img_like,.load .img_dwn{
@@ -149,11 +149,13 @@
 }
 .generated h2,.generated p{
     text-align: center;
+    color: var(--primary-text-color);
 }
 .generated h2{
     margin-top: 20px;
     font-size: 30px;
     font-weight: 500;
+    /* color: var(--primary-text-color); */
 }
 .generated p{
     font-size: 18px;

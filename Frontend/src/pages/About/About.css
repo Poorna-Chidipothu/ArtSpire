@@ -2,12 +2,13 @@
     padding: 70px 40px 20px;
     /* background-image: url('../../assets/hero-background.png');
     background-size: cover; */
+    color: var(--primary-text-color);
 }
 .about .about_head{
     font-size: 60px;
     font-weight: 600;
     margin-bottom: 10px;
-    color: #18360d;
+    color: var(--primary-text-color);
     padding-left: 60px;
 }
 .about .about_description{
@@ -27,7 +28,7 @@
 .about_features .feature_title,.about_words h2{
     position: relative;
     width: max-content;
-    color: #18360d;
+    color: var(--secondary-text-color);
     text-align: center;
     font-size: 35px;
     font-weight: 500;
@@ -102,8 +103,8 @@
     padding: 5px;
     font-size: 23px;
     border: 2px solid #7dd14a;
-    background-color: #c5eea8;
-    color: #18360d;
+    background-color: var(--secondary-background-color);
+    color: var(--primary-text-color);
     border-radius: 50%;
     width: 55px;
     height: 55px;
@@ -116,7 +117,7 @@
     text-align: right;
 }
 .feature_text h2{
-    color: #2f581c;
+    color: var(--secondary-text-color);
     margin-bottom: 10px;
     font-size: 27px;
 }
@@ -139,7 +140,8 @@
     margin-inline: auto;
     border: 3px solid #7dd14a;
     border-radius: 15px;
-    background-color: #e1f6d1;
+    background-color: var(--secondary-background-color);
+    color: var(--primary-text-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -148,11 +150,10 @@
 }
 .footer_hero h2{
     font-size: 30px;
-    color: #2f581c;
+    color: var(--main-color);
 }
 .footer_hero p{
     font-size: 20px;
-    color: #18360d;
     font-weight: 500;
 }
 .footer_hero button{

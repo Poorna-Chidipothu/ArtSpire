@@ -5,7 +5,7 @@ import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import AiGen from './pages/AiGen/AiGen'
 import Gallery from './pages/Gallery/Gallery'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { StoreContext } from './context/storeContext'
 import NotLoggedIn from './pages/NotLoggedIn/NotLoggedIn'
 import ScrollToTop from './components/ScrollToTop'
@@ -17,7 +17,12 @@ import Profile from './pages/Profile/Profile'
 
 
 function App() {
-  const {token} = useContext(StoreContext);
+  const {token,theme} = useContext(StoreContext);
+
+  useEffect(() => {
+    document.body.classList.toggle('dark_mode', theme === 'dark');
+    localStorage.setItem('theme', theme);
+}, [theme]);
   
 
   return (

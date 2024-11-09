@@ -11,7 +11,7 @@ import Search from '../Search/Search';
 
 
 const Navbar = () => {
-  const {popUp,setPopUp,setCurrentState,url,setMenuItem,token,setToken,username,setUsername,alertBox,setAlertBox,imgId,myImages,setMyImages} = useContext(StoreContext);
+  const {popUp,setPopUp,setCurrentState,url,setMenuItem,token,setToken,username,setUsername,alertBox,setAlertBox,imgId,myImages,setMyImages,setTheme} = useContext(StoreContext);
   const [showMenu,setShowMenu] = useState('');
   const [searchOpen, setSearchOpen] = useState(false); 
   const [headStyle,setHeadStyle] = useState({
@@ -19,16 +19,17 @@ const Navbar = () => {
     boxShadow: 'none'
   });
   
+  
   useEffect(()=> {
     const handleScroll = () => {
       if (window.scrollY > 200) {
         setHeadStyle({ 
-          backgroundColor: '#f2fbea',
+          backgroundColor: 'var(--background-color)',
           boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
         });
       }else{
         setHeadStyle({
-          backgroundColor: '#f2fbea',
+          backgroundColor: 'var(--background-color)',
           boxShadow: 'none'
         });
       }
@@ -57,6 +58,9 @@ const Navbar = () => {
       document.body.style.overflow = "auto";
     }
   },[popUp]);
+
+
+  
   
   const navigate = useNavigate();
 
@@ -142,6 +146,19 @@ const Navbar = () => {
                 <Link to='/profile' className="user_option"><span><i className="ri-user-settings-fill"></i></span> Profile</Link>
                 <Link to='/favourites' className="user_option" onClick={() => localStorage.setItem('menu','')}><span><ion-icon name="heart-circle"></ion-icon></span> My Favorites</Link>
                 <Link to='/my-uploads' className="user_option" onClick={() => localStorage.setItem('menu','')}><span><i className="uil uil-upload"></i></span> My Uploads</Link>
+                <li className="user_option theme">
+                  <span className={`light_mode ${localStorage.getItem('theme')==='light' ? 'active' : ''}`} onClick={()=>{
+                    setTheme('light');
+                    localStorage.setItem('theme','light');
+                  }}><ion-icon name="sunny"></ion-icon>
+                  </span> 
+                  <span className={`dark_mode ${localStorage.getItem('theme')==='dark' ? 'active' : ''}`} onClick={()=>{
+                    setTheme('dark');
+                    localStorage.setItem('theme','dark');
+                  }}>
+                    <ion-icon name="moon"></ion-icon>
+                  </span>
+                </li>
                 <li className="user_option logout" onClick={logout}><span><ion-icon name="log-out-outline"></ion-icon></span> Logout</li>
               </ul>
             </div>

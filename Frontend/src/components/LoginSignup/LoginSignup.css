@@ -19,7 +19,9 @@
   max-width: 400px;
   width: 100%;
   z-index: 100;
-  background-color: #f2fbea;
+  /* background-color: #f2fbea; */
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
   padding: 35px;
   border-radius: 12px;
   box-shadow: 0 0 100px rgba(255,255,255,0.3);
@@ -31,7 +33,7 @@
   position: absolute;
   top: 10px;
   right: 20px;
-  color: #18360d;
+  /* color: #18360d; */
   font-size: 25px;
   opacity: 0.7;
   cursor: pointer;
@@ -60,9 +62,9 @@
   border: none;
   outline: none;
   background: transparent;
-  border-bottom: 0.15rem solid #18360d;
+  border-bottom: 0.15rem solid rgb(76, 76, 76);
   border-radius: 1px;
-  color: #18360d;
+  color: var(--primary-text-color);
   padding: 0 30px;
   transition: all 0.2s ease;
   font-size: 16px;
@@ -83,7 +85,7 @@
 .input_box .password,
 .input_box .otp {
   left: 0;
-  color: #18360d;
+  /* color: #18360d; */
 }
 
 .input_box input:focus ~ .email,
@@ -94,7 +96,7 @@
 
 .input_box .pw_hide {
   right: 0;
-  color: #18360d;
+  /* color: #18360d; */
   cursor: pointer;
   font-size: 18px;
 }
@@ -147,7 +149,7 @@
 }
 
 .login_singnup {
-  color: #18360d;
+  color: var(--primary-text-color);
   margin-top: 10px;
   font-size: 14px;
   display: flex;

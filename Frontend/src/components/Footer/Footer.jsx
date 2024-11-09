@@ -56,8 +56,11 @@ const Footer = () => {
             </div>
 
             <div className="footer-bottom">
-                <p>&copy; 2024 ArtSpire. All rights reserved.</p>
-                <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>
+                    <span><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></span> 
+                    <span>&copy; 2024 ArtSpire. All rights reserved.</span> 
+                    <span>@Made By Poorna Chandra</span>
+                </p>
             </div>
         </footer>
   )

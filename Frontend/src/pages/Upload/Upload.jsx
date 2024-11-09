@@ -117,7 +117,9 @@ const Upload = () => {
                 onDragLeave={() => setDragBackground({ backgroundColor: 'transparent', opacity: '1' })}
                 onDragOver={(e) => { e.preventDefault(); setDragBackground({ backgroundColor: '#b5ff8d', opacity: '0.7' }) }}
                 onDrop={(e) => { handleDrop(e); setDragBackground({ backgroundColor: 'transparent', opacity: '1' }) }}>
-                <img src={upload_icon} alt="" />
+                <svg className='upload_icon' xmlns="http://www.w3.org/2000/svg" width="90" height="90" fill="none" viewBox="0 0 90 90">
+                    <path fill="#fff" fill-rule="evenodd" d="M31.725 27.315a19.86 19.86 0 0 1 36.503 9.536 16.45 16.45 0 1 1 .637 32.887H26.25a21.562 21.562 0 1 1 5.475-42.423Zm24.847 19.444a2.812 2.812 0 0 1-3.956.438l-4.803-3.847v12.9a2.812 2.812 0 1 1-5.626 0v-12.9l-4.807 3.844a2.812 2.812 0 0 1-4.221-3.556c.178-.323.419-.608.707-.84l9.368-7.488a2.81 2.81 0 0 1 1.743-.626h.03c.675 0 1.29.24 1.774.637l9.353 7.478a2.813 2.813 0 0 1 .438 3.96Z" clip-rule="evenodd"/>
+                </svg>
                 <div className="upload_controls">
                     <span><h2>Drag & Drop</h2></span>
                     <span>or</span>

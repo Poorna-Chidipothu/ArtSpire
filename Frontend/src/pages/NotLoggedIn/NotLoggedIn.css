@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    color: var(--primary-text-color);
 }
 .notsignin img{
     width: 400px;

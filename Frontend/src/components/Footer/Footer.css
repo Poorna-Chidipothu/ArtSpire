@@ -111,6 +111,14 @@ footer{
     margin-top: 20px;
 }
 
+.footer-bottom p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+}
+
 .footer-bottom a {
     /* color: #f2fbea; */
     color: #c5eea8;
@@ -128,5 +136,8 @@ footer{
     .footer-section{
         max-width: 100%;
 
+    }
+    .footer-bottom p {
+        justify-content: center;
     }
 }
