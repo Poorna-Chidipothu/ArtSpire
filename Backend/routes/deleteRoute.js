@@ -20,5 +20,14 @@ deleteRoute.delete('/:imgId',authMiddleware,async (req,res) => {
         res.status(500).json({ message: 'Internal Server Error', error: error.message });s
     }
 });
+deleteRoute.delete('/delete-account',authMiddleware,async (req,res) => {
+    const userId = req.userId;
+    try{
+        await UserModel.deleteOne({_id:userId});
+        return res.json({message: 'Account deleted successfully!'});
+    }catch(error){
+        res.status(500).json({ message: 'Internal Server Error', error: error.message });s
+    }
+});
 
 export default deleteRoute;

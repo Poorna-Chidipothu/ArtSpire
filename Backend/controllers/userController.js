@@ -89,7 +89,7 @@ const registerUser = async (req,res)=>{
                   .container { width: 100%; max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
                   h1 { color: #333333; }
                   p { color: #666666; line-height: 1.5; }
-                  .button { display: inline-block; padding: 10px 20px; margin: 20px 0; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px; }
+                  .button { display: inline-block; padding: 10px 20px; margin: 20px 0; background-color: #4CAF50; color: #ffffff; text-decoration: none; border-radius: 5px; }
                   .footer { margin-top: 20px; text-align: center; font-size: 12px; color: #888888; }
                 </style>
               </head>
