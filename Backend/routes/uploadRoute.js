@@ -4,6 +4,6 @@ import { uploader } from '../middlewares/multerMiddleware.js';
 import authMiddleware from '../middlewares/authMiddleware.js';
 const uploadRoute = express.Router();
 
-uploadRoute.post("/",authMiddleware,uploader.array('pictures',10),addImageController);
+uploadRoute.post("/",authMiddleware,uploader.array('files',10),addImageController);
 
 export default uploadRoute; 

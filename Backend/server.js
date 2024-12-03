@@ -19,6 +19,8 @@ import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import UserModel from "./models/userModel.js";
+import { log } from "console";
+import Media from "./models/mediaModel.js";
 
 // // Define __dirname for ES modules
 // const __filename = fileURLToPath(import.meta.url);
@@ -45,7 +47,7 @@ connectDB();
 app.use("/api/auth",userRouter)
 app.use("/api/upload",uploadRoute)
 app.use("/api/ai-gen",aigenRouter)
-app.use("/api/get-img",getRoute)
+app.use("/api/get-media",getRoute)
 app.use("/api/delete",deleteRoute)
 app.use("/api/like", likeRoute)
 
@@ -87,6 +89,38 @@ app.use("/api/like", likeRoute)
 // };
 
 // updateExistingImagesWithBlurHash();
+
+
+// const migrateImagetoMedia = async () => {
+//     try{
+//         const images = await Image.find();
+//         console.log(`Found ${images.length} images to migrate`);
+
+//         const mediaDocuments = images.map(image =>({
+//             media_url: image.picture.picture_url,
+//             public_id: image.picture.public_id,
+//             type: 'image',
+//             uploadedBy: image.uploadedBy,
+//             tags: image.tags || [],
+//             hash: image.hash,
+//             blurHash: image.blurHash,
+//             likes: image.likes,
+//             createdAt: image.uploadDate || new Date(),
+//             updatedAt: image.uploadDate || new Date(),
+//         }));
+
+//         const result = await Media.insertMany(mediaDocuments);
+//         console.log(`Migrated ${result.length} images to Media collection`);
+        
+        
+//     }
+//     catch(err){
+//         console.log(err);
+        
+//     }
+// }
+
+// migrateImagetoMedia();
 
 
 app.listen(port,()=>{
