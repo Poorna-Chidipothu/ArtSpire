@@ -19,8 +19,8 @@ const Home = () => {
     const fetchHomeImages = async()=> {
       setLoading(true);
       try{
-        const result = await axios.get(`${url}/api/get-img//get-home-images`);
-        setAllImages(result.data.images);
+        const result = await axios.get(`${url}/api/get-media/get-home-media`);
+        setAllImages(result.data.media);
       }catch(error){
         console.log(error);
       }finally{
@@ -46,10 +46,10 @@ const Home = () => {
         <>
           {allImages && (
             <>
-              <ul className="images_list">
+              <ul className="images_list one">
                   {allImages.map((item,index)=>(
                     <li className="image" key={index}>
-                      <img src={item.picture.picture_url}
+                      <img src={item.media_url}
                         onLoad={() => handleImageLoad(index)}
                         className={loadedImages[index] ? 'loaded' : ''}
                         loading="lazy"
@@ -66,7 +66,6 @@ const Home = () => {
                 :
                   <>
                     <p>Do you like the images? <br /> you can discover breathtaking images by visting the Gallery</p>
-                    {/* <button onClick={()=>{}}>Go to Gallery <ion-icon name="arrow-forward-outline"></ion-icon></button> */}
                     <Link to='/gallery' className='button' onClick={()=>{setMenuItem('gallery');localStorage.setItem('menu','gallery')}}>Go to Gallery <ion-icon name="arrow-forward-outline"></ion-icon></Link>
                   </>
                 }

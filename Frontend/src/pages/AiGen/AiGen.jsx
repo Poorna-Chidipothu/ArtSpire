@@ -58,12 +58,21 @@ const AiGen = () => {
             });
 
             // setLoading(false);
-            setGenImg(images.map((imgSrc, index) => (
+            setLoadedImages({});
+            const loadedImgCards = images.map((imgSrc, index) => (
               <div key={index} className="image_card">
-                <img src={imgSrc} alt="Generated content" />
+                <img src={imgSrc} alt="Generated content"
+                  onLoad={() => handleImageLoad(index)}
+                  className={loadedImages[index] ? 'loaded' : ''}
+                  loading="lazy"
+                />
                 <a download href={imgSrc}><span className="img_dwn"><ion-icon name="arrow-down-outline"></ion-icon></span></a>
               </div>
-            )));
+            ))
+            setGenImg(loadedImgCards);
+            setTimeout(() => {
+              setGenImg([]);
+            }, 20000);
           } else {
             console.log('Image generation is still in progress...');
           }
@@ -90,7 +99,12 @@ const AiGen = () => {
 
     const imgCards = Array.from({ length: imgQuant }, (_, index) => (
       <div key={index} className={`image_card load`}>
-        <img src={load} alt="Loading" />
+        {/* <img src={load} alt="Loading" 
+          onLoad={() => handleImageLoad(index)}
+          className={loadedImages[index] ? 'loaded' : ''}
+          loading="lazy"
+        /> */}
+        
       </div>
     ));
 
@@ -105,7 +119,7 @@ const AiGen = () => {
 
   useEffect(() => {
     const fetchAIImages = async()=> {
-      const result = await axios.get(`${url}/api/get-img/get-aigen-images`,{
+      const result = await axios.get(`${url}/api/get-media/get-aigen-images`,{
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -144,7 +158,7 @@ const AiGen = () => {
         {storedAiImages.length > 0 || genImg.length > 0
           ?
             <>
-              {storedAiImages.length > 0 ? <h2>Your creations</h2> : <></>} 
+              {storedAiImages.length > 0 ? <h2 className='gen_title'>Your creations</h2> : <></>} 
               <div className="ai-gen_images">
                 {storedAiImages.map((item,index)=>(
                   <div className="image_card" key={index}>
@@ -162,7 +176,7 @@ const AiGen = () => {
           :
             <div className='not_created'>
               <img src={arrow} className='arrow' />
-              <h2>You have not created your art yet!</h2>
+              <h3>You have not created your art yet!</h3>
               <p>Enter the idea above, we will generate it for you....</p>
             </div>
         }

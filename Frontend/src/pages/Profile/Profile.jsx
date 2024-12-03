@@ -32,7 +32,7 @@ const Profile = () => {
 
         <div className='profile_options'>
           <Link to="/change-password" className='change_pass'>Forgot/Change Password</Link>
-          <a className='delete_account' onClick={()=>handleDelAccount()}>Delete Account</a>
+          {/* <a className='delete_account' onClick={()=>handleDelAccount()}>Delete Account</a> */}
         </div>
         
     </div>

@@ -22,7 +22,7 @@ const Navbar = () => {
   
   useEffect(()=> {
     const handleScroll = () => {
-      if (window.scrollY > 200) {
+      if (window.scrollY > 65) {
         setHeadStyle({ 
           backgroundColor: 'var(--background-color)',
           boxShadow: '0px 0px 10px rgba(0,0,0,0.5)'
@@ -34,7 +34,7 @@ const Navbar = () => {
         });
       }
 
-      if (localStorage.getItem('menu') === 'home' && window.scrollY < 200) {
+      if (localStorage.getItem('menu') === 'home' && window.scrollY < 65) {
         setHeadStyle({
           backgroundColor: 'transparent',
           boxShadow: 'none'
@@ -134,7 +134,7 @@ const Navbar = () => {
           </>
         :
           <>
-            {localStorage.getItem('menu')==='gallery' ? <span className='search_icon' onClick={() => setSearchOpen(true)}><ion-icon name="search-outline"></ion-icon></span> : <></>}
+            {localStorage.getItem('menu')==='gallery' ? <span className='search_icon' onClick={() =>setSearchOpen(true)}><ion-icon name="search-outline"></ion-icon></span> : <></>}
             <Link to='/upload' ><button className='upload_btn' onClick={() => localStorage.setItem('menu','')}><span className="icon"><i className="uil uil-upload"></i></span><span className="text">Upload</span></button></Link>
             <div className="user_info">
               <div>
@@ -166,7 +166,7 @@ const Navbar = () => {
         }
         
       </div>
-      {searchOpen ? <Search setSearchOpen={setSearchOpen}/> : <></>}
+      {searchOpen ? <Search searchOpen={searchOpen} setSearchOpen={setSearchOpen} /> : <></>}
       
     </header>
   )

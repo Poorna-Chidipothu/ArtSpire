@@ -11,6 +11,7 @@
   --secondary-background-color: #e2fcce;
   --primary-text-color: #18360d;
   --secondary-text-color: #5db62c;
+  --button-text-color: #fff;
   --loading-color: #d0f3b6;
 }
 html{
@@ -21,9 +22,6 @@ body{
   position: relative;
 }
 body.dark_mode{
-  /* --background-color: #292929;
-  --primary-text-color: #f2fbea;
-  --secondary-text-color: #5db62c; */
   --main-color: #7acc47;        
   --background-color: #1a1f17; 
   --secondary-background-color: #12290a; 
@@ -81,10 +79,13 @@ a{
 }
 
 @keyframes img-loading {
-  0%,100%{
-    background-color: #e2fcce;
-  }
-  50%{
-    background-color: #71c531;
-  }
+  0% { background-color: #7bc442; }
+  50% { background-color: #319322; }
+  100% { background-color: #7bc442; }
+}
+
+@keyframes likeAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }

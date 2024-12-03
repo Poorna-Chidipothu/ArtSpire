@@ -110,13 +110,15 @@ nav .nav_items{
 }
 .nav_controlls .Signup,.upload_btn{
     background-color:  var(--main-color);
-    color: #f2fbea;
+    /* color: #f2fbea; */
+    color: var(--button-text-color);
     border: 0.15rem solid var(--main-color);
 }
 .nav_controlls .Login:hover{
     border: 0.15rem solid var(--main-color);
     background-color: var(--main-color);
-    color: #f2fbea;
+    /* color: #f2fbea; */
+    color: var(--button-text-color);
 }
 .menu_toggle{
     display: none;

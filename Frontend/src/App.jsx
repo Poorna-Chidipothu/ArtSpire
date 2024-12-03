@@ -14,6 +14,7 @@ import Myuploads from './pages/Myuploads/Myuploads'
 import Favourites from './pages/Favourites/Favourites'
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword'
 import Profile from './pages/Profile/Profile'
+import ImageView from './components/ImageView/ImageView'
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
     <>
       <ScrollToTop/>
       <Navbar/>
+      <ImageView />
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>

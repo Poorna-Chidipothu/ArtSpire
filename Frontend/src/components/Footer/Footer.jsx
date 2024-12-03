@@ -59,7 +59,7 @@ const Footer = () => {
                 <p>
                     <span><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></span> 
                     <span>&copy; 2024 ArtSpire. All rights reserved.</span> 
-                    <span>@Made By Poorna Chandra</span>
+                    {/* <span>@Made By Poorna Chandra</span> */}
                 </p>
             </div>
         </footer>

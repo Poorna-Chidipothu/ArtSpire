@@ -1,17 +1,30 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect, useRef } from 'react';
 import './Search.css'
 import { StoreContext } from '../../context/storeContext';
 
 
-const Search = ({setSearchOpen}) => {
+const Search = ({searchOpen,setSearchOpen}) => {
     const { setSearchQuery } = useContext(StoreContext);
     const [query, setQuery] = useState('');
+    const inputRef = useRef(null);
 
     const handleSearch = (e) => {
       e.preventDefault();
       setSearchQuery(query);
       setSearchOpen(false);
     };
+
+    const handleSearchClick = () => {
+      if (inputRef.current) {
+          inputRef.current.focus(); // Focus the input element
+        }
+    };
+
+    useEffect(() => {
+      if (searchOpen) {
+        handleSearchClick();
+      }
+    }, [searchOpen]);
 
     const handleKeyPress = (event) => {
       if (event.key === 'Enter') {
@@ -27,7 +40,7 @@ const Search = ({setSearchOpen}) => {
         <div className="search_box">
           <form onSubmit={handleSearch}> 
             <ion-icon className='srch_icon' name="search-outline" ></ion-icon>
-            <input type="text" placeholder='Search Images...' value={query} onChange={(e) => setQuery(e.target.value)} onKeyPress={handleKeyPress}/>
+            <input type="text" placeholder='Search Images...' value={query} onChange={(e) => setQuery(e.target.value)} ref={inputRef} onKeyPress={handleKeyPress}/>
             {
                 query.length > 0 ? <ion-icon name="close-outline" onClick={() => setQuery('')}></ion-icon> : null
             }

@@ -1,4 +1,5 @@
 .hero{
+    position: relative;
     display: flex;
     align-items:start;
     justify-content: center;
@@ -6,7 +7,6 @@
     width: 100%;
     background-image: url(../../assets/hero-background_com.png);
     background-size: cover;
-    /* mix-blend-mode:; */
 }
 .hero .content_container{
     width: 50%;
@@ -45,7 +45,7 @@
     border: none;
     outline: none;
     background-color: #5db62c;
-    color: #f2fbea;
+    color: var(--button-text-color);
     cursor: pointer;
     font-size: 20px;
     display: flex;
@@ -66,17 +66,22 @@
     gap: 5px;
 }
 .hero_controls .explore ion-icon,
-.hero_controls a ion-icon{
+.hero_controls a ion-icon,
+.signup_msg button ion-icon,
+.footer_hero button ion-icon{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 25px;
+    transition: transform 0.3s ease-in-out;
+    transform: rotate(-40deg);
 }
 .hero_controls .explore:hover ion-icon,
 .hero_controls a:hover ion-icon,
 .signup_msg button:hover ion-icon,
 .footer_hero button:hover ion-icon{
-    transform: translateX(5px);
-    transition: transform 0.3s ease-in-out;
+    transform: translate(3px,-3px) rotate(-40deg);
+    
 }
 .hero_controls a:hover{
     text-decoration: underline;

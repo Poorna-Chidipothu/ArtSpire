@@ -34,7 +34,7 @@
     font-weight: 500;
     margin-bottom: 20px;
 }
-.about_features .feature_title:after,.about_words h2::after{
+.about_features .feature_title:after,.about_words h2::after,.generated .gen_title::after{
     content: '';
     height: 5px;
     width: 40%;
@@ -163,7 +163,8 @@
     border: none;
     border-radius: 10px;
     background-color: #5db62c;
-    color: #f2fbea;
+    /* color: #f2fbea; */
+    color: var(--button-text-color);
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
