@@ -14,7 +14,7 @@
   gap: 20px;
   padding: 20px 10px;
   overflow: scroll;
-
+  /* background-color: #7dd14a; */
 }
 .filter_container::-webkit-scrollbar{
   display: none;
@@ -29,12 +29,27 @@
   padding: 3px 15px;
   transition: all .2s ease;
 }
+.filter_icon{
+  position: relative;
+  padding-left: 3px !important;
+  /* background-color: aqua; */
+}
+.filter_icon::after{
+  content: '';
+  background-color: #333;
+  position: absolute;
+  height: 140%;
+  width: 0.12rem;
+  border-radius: 3px;
+  right: 5%;
+  top: -15%;
+}
 .filter_icon ion-icon{
   font-size: 25px;
 }
 .filter_container span:not(.filter_icon){
   border: 0.12rem solid #333;
-  border-radius: 30px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -184,6 +199,7 @@
   height: 33px;
   width: 33px;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
   color: #18360d;
@@ -265,6 +281,27 @@
     max-width: 95%;
   }
 
+  .filter_container{
+    gap: 10px;
+    padding: 12px 10px;
+    overflow: scroll;
+  }
+
+  .search_head{
+    /* background-color: #7dd14a; */
+    gap: 10px;
+    padding: 12px 10px;
+  }
+  .search_head span{
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+  }
+  .search_head p{
+    font-size: 21px;
+  }
+  
+
   .my-masonry-grid {
     margin-left: -10px; /* gutter size offset */
     width: auto;
@@ -278,6 +315,7 @@
   .media-container {
     margin-bottom: 10px;
     position: relative;
+    
   }
 
   .media-container .media_content,
@@ -286,10 +324,21 @@
     bottom: 0;
     width: 100%;
     border-radius: 0;
-    padding-block: 10px;
+    padding-block: 7px;
+  }
+
+  .media-container .media_content span{
+    gap: 8px;
+  }
+  .media-container .media_content span .img_holder{
+    width: 28px;
+    height: 28px;
+    /* font-size: 20px; */
+    font-weight: 520;
   }
   .media-container .media_content h3{
     font-weight: 510;
+    font-size: 17px;
   }
   .img_like,.img_delete{
     opacity: 1;
@@ -297,7 +346,7 @@
     width: 30px;
     height: 30px;
   }
-  .img_dwn,.img_holder,.media_dwn{
+  .img_dwn.media_dwn{
     width: 30px;
     height: 30px;
   }

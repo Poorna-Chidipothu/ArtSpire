@@ -242,7 +242,7 @@ const Gallery = () => {
           <span onClick={() => setSearchQuery('')}>
             <ion-icon name="chevron-back-outline"></ion-icon>
           </span>
-          <p>Search results for <b>{searchQuery}</b></p>
+          <p>Search results for "<b>{searchQuery}</b>"</p>
         </div>
       ) : null}
 
