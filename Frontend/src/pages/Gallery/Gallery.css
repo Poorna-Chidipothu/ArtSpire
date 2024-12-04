@@ -84,6 +84,7 @@
 .my-masonry-grid_column {
   padding-left: 16px; /* gutter size */
   background-clip: padding-box;
+  
 }
 
 /* Style your images or other content */
@@ -264,16 +265,31 @@
     max-width: 95%;
   }
 
-  .image-container .image_content,
-    .image-container:hover .image_content {
+  .my-masonry-grid {
+    margin-left: -10px; /* gutter size offset */
+    width: auto;
+  }
+  .my-masonry-grid_column {
+    padding-left: 10px; /* gutter size */
+    background-clip: padding-box;
+    
+  }
+
+  .media-container {
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .media-container .media_content,
+    .media-container:hover .media_content {
     left: 0;
     bottom: 0;
     width: 100%;
     border-radius: 0;
-    padding-block: 15px;
+    padding-block: 10px;
   }
-  .image-container .image_content h3{
-    font-weight: 530;
+  .media-container .media_content h3{
+    font-weight: 510;
   }
   .img_like,.img_delete{
     opacity: 1;
@@ -281,14 +297,12 @@
     width: 30px;
     height: 30px;
   }
-  .img_dwn,.img_holder{
+  .img_dwn,.img_holder,.media_dwn{
     width: 30px;
     height: 30px;
   }
 
-    .gallery_container .images_list{
+    /* .gallery_container .images_list{
         max-width: 95%;
-        /* gap: 10px;
-        columns: 5 200px; */
-    }
+    } */
 }

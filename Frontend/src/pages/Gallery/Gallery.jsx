@@ -45,7 +45,7 @@ const Gallery = () => {
     default: 4,
     1100: 3,
     700: 2,
-    500: 1,
+    400: 1,
   };
 
   const getDownloadUrl = (url, type) => {
@@ -211,6 +211,18 @@ const Gallery = () => {
       }
     }
   }, [page]);
+
+  useEffect(() => {
+    setPage(1);
+    setHasMore(true);
+    setSomeImages([]);
+    fetchMedia(1, searchQuery);
+    
+    if (searchQuery) {
+      setIsSearchPerformed(true);
+      window.scrollTo(0, 0);
+    }
+  }, [searchQuery]);
 
   
   return (
