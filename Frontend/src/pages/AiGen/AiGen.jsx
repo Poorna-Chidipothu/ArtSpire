@@ -12,7 +12,7 @@ const AiGen = () => {
   const { url } = useContext(StoreContext);
   const [userPrompt, setUserPrompt] = useState('');
   const [imgQuantity, setImgQuantity] = useState(4);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [genImg, setGenImg] = useState([]);
   const [storedAiImages, setStoredAiImages] = useState([]);
   const [error, setError] = useState('');
@@ -120,7 +120,6 @@ const AiGen = () => {
 
   useEffect(() => {
     const fetchAIImages = async () => {
-      setLoading(true);
       try {
         const result = await axios.get(`${url}/api/get-media/get-aigen-images`, {
           headers: {
