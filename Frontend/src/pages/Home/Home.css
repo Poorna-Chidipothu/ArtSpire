@@ -7,6 +7,20 @@
     min-height: 500px;
 }
 
+.load_container{
+    width: 95%;
+    /* display: flex; */
+    columns: 4 300px;
+    column-gap: 15px;
+}
+.load_container .load_item{
+    height: 300px;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    animation: img-loading 1.5s infinite ease-in-out;
+}
+
 
 .home .images_list{
     max-width: 95%;

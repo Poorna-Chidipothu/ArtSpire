@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect, useRef } from 'react';
 import './Search.css'
 import { StoreContext } from '../../context/storeContext';
+import { X, Search as SearchIcon } from 'lucide-react';
 
 
 const Search = ({searchOpen,setSearchOpen}) => {
@@ -39,12 +40,12 @@ const Search = ({searchOpen,setSearchOpen}) => {
         </div>
         <div className="search_box">
           <form onSubmit={handleSearch}> 
-            <ion-icon className='srch_icon' name="search-outline" ></ion-icon>
+            <SearchIcon size={20} strokeWidth={1.75} />
             <input type="text" placeholder='Search Images...' value={query} onChange={(e) => setQuery(e.target.value)} ref={inputRef} onKeyPress={handleKeyPress}/>
             {
-                query.length > 0 ? <ion-icon name="close-outline" onClick={() => setQuery('')}></ion-icon> : null
+                query.length > 0 ? <X size={20} strokeWidth={1.75} onClick={() => setQuery('')}/> : null
             }
-            <button type='submit'><ion-icon name='search-outline'></ion-icon><span>Search</span></button>
+            <button type='submit'><SearchIcon className='srch_icon' size={20} strokeWidth={1.75} /><span>Search</span></button>
           </form>
         </div>
     </div>

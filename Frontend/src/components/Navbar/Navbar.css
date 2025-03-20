@@ -61,8 +61,13 @@ nav .nav_items {
     transition: color .3s ease;
 }
 
-.nav_item ion-icon {
+.nav_item .menu_icons,
+.nav_item .link_arrow {
     display: none;
+}
+
+.nav_item .link_arrow{
+    transform: rotate(45deg);
 }
 
 .nav_items .nav_item:hover {
@@ -425,11 +430,13 @@ nav .nav_items {
     }
 
     .nav .menu_close_icon {
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 40px;
         color: var(--primary-text-color);
+        margin-top: 30px;
     }
 
     .nav .nav_items {
@@ -451,9 +458,9 @@ nav .nav_items {
         
     }
 
-    .nav_item ion-icon {
+    .nav_item .menu_icons,
+    .nav_item .link_arrow {
         display: block;
-        /* font-size: 24px; */
     }
 
     .nav_item ion-icon:nth-child(2) {

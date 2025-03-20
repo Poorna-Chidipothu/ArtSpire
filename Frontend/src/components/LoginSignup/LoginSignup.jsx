@@ -1,11 +1,11 @@
 // import React from 'react'
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import './LoginSignup.css';
-import { useContext } from 'react';
 import { StoreContext } from '../../context/storeContext';
 import axios from 'axios';
 import Password from '../Password/Password';
 import { Link } from 'react-router-dom';
+import { CircleX, Mail, User } from 'lucide-react';
 
 const LoginSignup = () => {
     const { setPopUp, currentState, setCurrentState, url, setToken, setUsername } = useContext(StoreContext);
@@ -77,14 +77,14 @@ const LoginSignup = () => {
         <div className="wrapper">
             {error && (
                 <div className="msg">
-                    <i className="uis uis-times-circle error"></i>
+                    <i className="uis uis-times-circle error_icon"></i>
                     <p>{error}</p>
                 </div>
             )}
 
             <div className="container">
-                <i onClick={() => setPopUp(false)} className="uis uis-times-circle form_close" id="reg_cls"></i>
-
+                {/* <i onClick={() => setPopUp(false)} className="uis uis-times-circle form_close" id="reg_cls"></i> */}
+                <CircleX className="form_close" onClick={() => setPopUp(false)} size={22} strokeWidth={1.75} />
                 <div className="form">
                     <form onSubmit={onLogin} className="rform" method="post">
                         <h2>{currentState === 'signup' ? 'Signup' : 'Login'}</h2>
@@ -101,7 +101,7 @@ const LoginSignup = () => {
                                     placeholder="Enter Your Name"
                                     required
                                 />
-                                <i className="uil uil-user email"></i>
+                                <User className='email lg_icon' size={20} strokeWidth={1.75}/>
                             </div>
                         ) : null}
 
@@ -115,7 +115,8 @@ const LoginSignup = () => {
                                 placeholder="Enter Your Email"
                                 required
                             />
-                            <i className="uil uil-envelope-alt email"></i>
+                            {/* <i className="uil uil-envelope-alt email"></i> */}
+                            <Mail className='email lg_icon' size={20} strokeWidth={1.75}/>
                         </div>
 
                         {/* Password component */}

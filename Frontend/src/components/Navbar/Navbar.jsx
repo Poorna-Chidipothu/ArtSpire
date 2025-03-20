@@ -7,7 +7,8 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import LoginSignup from '../LoginSignup/LoginSignup';
 import { StoreContext } from '../../context/storeContext';
 import axios from 'axios';
-import Search from '../Search/Search';
+import SearchComponent from '../Search/Search';
+import { CircleUserRound, Menu, Upload, Search, ChevronDown, UserRoundCog, Heart, MoonStar, Sun, LogOut, House, Image, Sparkles, Info, ImageUp, FileUp, ArrowUpFromDot, CircleX } from 'lucide-react';
 
 
 const Navbar = () => {
@@ -108,7 +109,7 @@ const Navbar = () => {
       <nav>
         <div className="menu_toggle" onClick={() => setShowMenu('show_menu')}>
           {/* <i className="ri-menu-2-fill"></i> */}
-          <ion-icon name="menu-outline"></ion-icon>
+          <Menu size={30} strokeWidth={2} />
         </div>
         <Link to='/' onClick={() => { setMenuItem('home'); localStorage.setItem('menu', 'home') }}>
           <div className="logo">
@@ -117,27 +118,27 @@ const Navbar = () => {
           </div>
         </Link>
         <div className={`nav ${showMenu}`} >
-          <span className="menu_close_icon" onClick={() => setShowMenu('')}><ion-icon name="close-outline"></ion-icon></span>
+          <span className="menu_close_icon" onClick={() => setShowMenu('')}><CircleX size={34} strokeWidth={1.75} /></span>
           <ul className="nav_items">
             <Link to='/'
               className={`nav_item ${localStorage.getItem('menu') === 'home' ? 'active' : ''}`}
               onClick={() => { setMenuItem('home'); setShowMenu(''); localStorage.setItem('menu', 'home') }}
-            ><ion-icon name="home"></ion-icon> Home <ion-icon name="arrow-forward-outline" className="arrow_icon"></ion-icon>
+            ><House size={20} strokeWidth={1.75} className='menu_icons'/> Home <ArrowUpFromDot size={18} strokeWidth={2} className="link_arrow"/>
             </Link>
             <Link to='/about'
               className={`nav_item ${localStorage.getItem('menu') === 'about' ? 'active' : ''}`}
               onClick={() => { setMenuItem('about'); setShowMenu(''); localStorage.setItem('menu', 'about') }}
-            ><ion-icon name="information-circle"></ion-icon> About <ion-icon name="arrow-forward-outline" className="arrow_icon"></ion-icon>
+            ><Info size={20} strokeWidth={1.75} className='menu_icons'/> About <ArrowUpFromDot size={18} strokeWidth={2} className="link_arrow"/>
             </Link>
             <Link to='/ai-gen'
               className={`nav_item ${localStorage.getItem('menu') === 'aigen' ? 'active' : ''}`}
               onClick={() => { setMenuItem('aigen'); setShowMenu(''); localStorage.setItem('menu', 'aigen') }}
-            ><ion-icon className="icon" name="sparkles"></ion-icon>AiGen <ion-icon name="arrow-forward-outline" className="arrow_icon"></ion-icon>
+            ><Sparkles size={20} strokeWidth={1.75} className='menu_icons'/>AiGen <ArrowUpFromDot size={18} strokeWidth={2} className="link_arrow"/>
             </Link>
             <Link to='/gallery'
               className={`nav_item ${localStorage.getItem('menu') === 'gallery' ? 'active' : ''}`}
               onClick={() => { setMenuItem('gallery'); setShowMenu(''); localStorage.setItem('menu', 'gallery') }}
-            ><ion-icon className="icon" name="images"></ion-icon> Gallery <ion-icon name="arrow-forward-outline" className="arrow_icon"></ion-icon>
+            ><Image size={20} strokeWidth={1.75} className='menu_icons'/> Gallery <ArrowUpFromDot size={18} strokeWidth={2} className="link_arrow"/>
             </Link>
           </ul>
         </div>
@@ -150,39 +151,39 @@ const Navbar = () => {
           </>
           :
           <>
-            {localStorage.getItem('menu') === 'gallery' ? <span className='search_icon' onClick={() => setSearchOpen(true)}><ion-icon name="search-outline"></ion-icon></span> : <></>}
-            <Link to='/upload' ><button className='upload_btn' onClick={() => localStorage.setItem('menu', '')}><span className="icon"><i className="uil uil-upload"></i></span><span className="text">Upload</span></button></Link>
+            {localStorage.getItem('menu') === 'gallery' ? <span className='search_icon' onClick={() => setSearchOpen(true)}><Search size={24} strokeWidth={2.5} /></span> : <></>}
+            <Link to='/upload' ><button className='upload_btn' onClick={() => localStorage.setItem('menu', '')}><FileUp size={20} strokeWidth={1.75} />Upload</button></Link>
             <div className="user_info">
               <div>
-                <span><ion-icon name="person"></ion-icon></span>
+                <span><CircleUserRound size={24} strokeWidth={2} /></span>
                 <span className='name'>{username}</span>
-                <span><ion-icon name="chevron-down-outline"></ion-icon></span>
+                <span><ChevronDown size={24} strokeWidth={2} /></span>
               </div>
               <ul className="user_info_settings">
-                <Link to='/profile' className="user_option"><span><i className="ri-user-settings-fill"></i></span> Profile</Link>
-                <Link to='/favourites' className="user_option" onClick={() => localStorage.setItem('menu', '')}><span><ion-icon name="heart-circle"></ion-icon></span> My Favorites</Link>
-                <Link to='/my-uploads' className="user_option" onClick={() => localStorage.setItem('menu', '')}><span><i className="uil uil-upload"></i></span> My Uploads</Link>
+                <Link to='/profile' className="user_option"><span><UserRoundCog size={20} strokeWidth={1.75} /></span> Profile</Link>
+                <Link to='/favourites' className="user_option" onClick={() => localStorage.setItem('menu', '')}><span><Heart size={20} strokeWidth={1.75} /></span> My Favorites</Link>
+                <Link to='/my-uploads' className="user_option" onClick={() => localStorage.setItem('menu', '')}><span><Upload size={20} strokeWidth={1.75} /></span> My Uploads</Link>
                 <li className="user_option theme">
                   <span className={`light_mode ${localStorage.getItem('theme') === 'light' ? 'active' : ''}`} onClick={() => {
                     setTheme('light');
                     localStorage.setItem('theme', 'light');
-                  }}><ion-icon name="sunny"></ion-icon>
+                  }}><Sun size={20} strokeWidth={1.75} />
                   </span>
                   <span className={`dark_mode ${localStorage.getItem('theme') === 'dark' ? 'active' : ''}`} onClick={() => {
                     setTheme('dark');
                     localStorage.setItem('theme', 'dark');
                   }}>
-                    <ion-icon name="moon"></ion-icon>
+                    <MoonStar size={20} strokeWidth={1.75} />
                   </span>
                 </li>
-                <li className="user_option logout" onClick={logout}><span><ion-icon name="log-out-outline"></ion-icon></span> Logout</li>
+                <li className="user_option logout" onClick={logout}><span><LogOut size={20} strokeWidth={1.75} /></span> Logout</li>
               </ul>
             </div>
           </>
         }
 
       </div>
-      {searchOpen ? <Search searchOpen={searchOpen} setSearchOpen={setSearchOpen} /> : <></>}
+      {searchOpen ? <SearchComponent searchOpen={searchOpen} setSearchOpen={setSearchOpen} /> : <></>}
 
     </header>
   )

@@ -31,7 +31,7 @@
 
 .container .form_close {
   position: absolute;
-  top: 10px;
+  top: 20px;
   right: 20px;
   /* color: #18360d; */
   font-size: 25px;
@@ -69,11 +69,11 @@
   transition: all 0.2s ease;
   font-size: 16px;
 }
-.input_box i {
+.input_box .lg_icon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 20px;
+  font-size: 18px;
 }
 .input_box input:focus {
   border-bottom: 0.15rem solid var(--main-color);

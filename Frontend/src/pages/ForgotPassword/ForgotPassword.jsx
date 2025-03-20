@@ -4,6 +4,7 @@ import axios from 'axios';
 import { StoreContext } from '../../context/storeContext';
 import Password from '../../components/Password/Password';
 import { useNavigate } from 'react-router-dom';
+import { CircleCheck, CircleX, Mail } from 'lucide-react';
 
 const ForgotPassword = () => {
     const {url,setPopUp,setCurrentState} = useContext(StoreContext);
@@ -76,12 +77,12 @@ const ForgotPassword = () => {
             <div className="msg">
                 {success ? (
                     <>
-                        <i className="uis uis-check-circle success"></i>
+                        <CircleCheck fill="green" color='#fff' size={30} strokeWidth={1.75} className="success_icon"/>
                         <p>{success}</p>
                     </>
                 ) : error ? (
                 <>
-                        <i className="uis uis-times-circle error"></i>
+                        <CircleX fill="red" color='#fff' size={30} strokeWidth={1.75} className="error_icon"/>
                         <p>{error}</p>
                 </>
                 ) : null}
@@ -100,7 +101,7 @@ const ForgotPassword = () => {
                             onChange={(e) => setEmail(e.target.value)} 
                             required 
                         />
-                        <i className="uil uil-envelope-alt email"></i>
+                        <Mail size={20} strokeWidth={1.75} className='mail_icon'/>
                     </div>
                     <button className="button" onClick={handleSendOtp} disabled={loading}>
                             {loading ? 'Sending OTP...' : 'Send OTP'}
@@ -116,7 +117,7 @@ const ForgotPassword = () => {
                             onChange={(e) => setOtp(e.target.value)}
                             required
                         />
-                        <i className="uil uil-lock otp"></i>
+                        <Lock size={20} strokeWidth={1.75} className="otp"/>
                     </div>
 
                     <Password placeholder="Enter New Password" onChangeHandler={(e) => setNewPassword(e.target.value)} />

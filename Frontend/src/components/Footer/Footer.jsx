@@ -2,7 +2,8 @@
 import './Footer.css'
 import { useContext } from 'react'
 import { StoreContext } from '../../context/storeContext'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { ArrowUpFromDot, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
   
@@ -23,12 +24,12 @@ const Footer = () => {
                 <div className="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li onClick={()=>{setMenuItem('about');localStorage.setItem('menu','gallery')}}><Link to="/about">About Us <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
-                        <li onClick={()=>{setMenuItem('gallery');localStorage.setItem('menu','gallery')}}><Link to="/gallery">Gallery <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
-                        <li onClick={()=>{localStorage.setItem('menu','')}}><Link to="/upload">Upload Your Art <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
-                        <li onClick={()=>{setMenuItem('aigen');localStorage.setItem('menu','gallery')}}><Link to="/ai-gen">AI Gen <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
-                        <li onClick={()=>{localStorage.setItem('menu','')}}><Link to="/favourites">Favourites <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
-                        <li><Link to="/contact">Contact Us <ion-icon name="arrow-forward-outline"></ion-icon></Link></li>
+                        <li onClick={()=>{setMenuItem('about');localStorage.setItem('menu','gallery')}}><Link to="/about">About Us <ArrowUpFromDot size={20} strokeWidth={2} className="link_arrow"/></Link></li>
+                        <li onClick={()=>{setMenuItem('gallery');localStorage.setItem('menu','gallery')}}><Link to="/gallery">Gallery <ArrowUpFromDot size={20} strokeWidth={2} className="link_arrow"/></Link></li>
+                        <li onClick={()=>{localStorage.setItem('menu','')}}><Link to="/upload">Upload Your Art <ArrowUpFromDot size={20} strokeWidth={2} className="link_arrow"/></Link></li>
+                        <li onClick={()=>{setMenuItem('aigen');localStorage.setItem('menu','gallery')}}><Link to="/ai-gen">AI Gen <ArrowUpFromDot size={20} strokeWidth={2} className="link_arrow"/></Link></li>
+                        <li onClick={()=>{localStorage.setItem('menu','')}}><Link to="/favourites">Favourites <ArrowUpFromDot size={20} strokeWidth={2} className="link_arrow"/></Link></li>
+                        <li><Link to="/contact">Contact Us <ArrowUpFromDot size={20} strokeWidth={2} className="link_arrow"/></Link></li>
                     </ul>
                 </div>
 
@@ -37,10 +38,10 @@ const Footer = () => {
                     <h3>Connect With Us</h3>
                     <p>Follow us on social media to stay updated with the latest from ArtSpire.</p>
                     <div className="social-links">
-                        <a href=""><i className="ri-pinterest-line"></i></a>
-                        <a href="https://www.instagram.com/ArtSpire"><i className="ri-instagram-line"></i></a>
-                        <a href="https://www.twitter.com/ArtSpire"><i className="ri-twitter-x-line"></i></a>
-                        <a href="https://www.facebook.com/ArtSpire"><i className="ri-facebook-fill"></i></a>
+                        <a href="#"><Linkedin size={24} strokeWidth={2} className="social_link"/></a>
+                        <a href="https://www.instagram.com/ArtSpire"><Instagram size={24} strokeWidth={2} className="social_link"/></a>
+                        <a href="https://www.twitter.com/ArtSpire"><Twitter size={24} strokeWidth={2} className="social_link"/></a>
+                        <a href="https://www.facebook.com/ArtSpire"><Facebook size={24} strokeWidth={2} className="social_link"/></a>
                     </div>
                 </div>
 

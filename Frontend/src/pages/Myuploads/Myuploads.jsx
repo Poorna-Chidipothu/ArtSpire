@@ -2,6 +2,7 @@ import { useContext, useEffect, useState,useRef } from 'react'
 import './Myuploads.css';
 import axios from 'axios';
 import { StoreContext } from '../../context/storeContext';
+import { ArrowDownToLine, Heart, Play, Trash } from 'lucide-react';
 
 
 const Myuploads = () => {
@@ -85,14 +86,14 @@ const Myuploads = () => {
                 ) : (
                   <>
                     <span className="video_play" onClick={() => handleVideoToggle(index)}>
-                      <ion-icon name="play"></ion-icon>
+                      <Play size={16} fill='#333' strokeWidth={1.75} />
                     </span>
                     <video src={media.media_url} ref={(el) => (videoRefs.current[index] = el)}></video>
                   </>
                 )}
-                <span className="img_delete" onClick={() => handleDelClick(media._id)}><ion-icon name="trash" ></ion-icon></span>
-                <span className='likes'><ion-icon name="heart"></ion-icon> {media.likes.length}</span>
-                <a href={getDownloadUrl(media.media_url)} download className="img_dwn"><ion-icon name="arrow-down-outline"></ion-icon></a>
+                <span className="img_delete" onClick={() => handleDelClick(media._id)}><Trash size={18} strokeWidth={2.5} /></span>
+                <span className='likes'><Heart fill="red" color='red' size={18} strokeWidth={1.75} /> {media.likes.length}</span>
+                <a href={getDownloadUrl(media.media_url)} download className="img_dwn"><ArrowDownToLine size={18} strokeWidth={1.75} /></a>
               </li>
             ))}
           </ul>

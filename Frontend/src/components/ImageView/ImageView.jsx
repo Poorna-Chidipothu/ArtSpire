@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import './ImageView.css';
 import { StoreContext } from '../../context/storeContext';
 import axios from 'axios';
+import { ArrowDownToLine, Heart, X } from 'lucide-react';
 
 const ImageView = () => {
   const { shownImageData, setShownImageData, imageShow, setImageShow, url } = useContext(StoreContext);
@@ -130,18 +131,22 @@ const ImageView = () => {
           </span>
         </div>
         <div className="right_nav">
-          
-          {currentImage.url && (
+
+          {currentImage.displayType != "ai-image" && (
             <>
               <span
                 className="like-button"
                 onClick={() => handleLike(currentImage._id, currentImage.isLiked)}
                 title="Like Image"
               >
-                <ion-icon
-                  name={currentImage.isLiked ? "heart" : "heart-outline"}
-                  style={{ color: currentImage.isLiked ? "red" : "inherit" }}
-                ></ion-icon>
+                <Heart
+                  size={20}
+                  strokeWidth={1.75}
+                  color={currentImage.isLiked ? "#FF0000" : "black"}
+                  fill={currentImage.isLiked ? "#FF0000" : "none"}
+                  style={{ cursor: "pointer" }}
+                  aria-label={currentImage.isLiked ? "Unlike" : "Like"}
+                />
               </span>
 
               <a
@@ -149,10 +154,10 @@ const ImageView = () => {
                 download
                 className="download-button"
               >
-                <span><ion-icon name="arrow-down"></ion-icon><span className='tooltip'>Download</span></span>
+                <span><ArrowDownToLine size={20} strokeWidth={1.75} /><span className='tooltip'>Download</span></span>
               </a>
             </>
-            
+
           )}
           {currentImage.aigen_picture_url && (
             <a
@@ -160,17 +165,17 @@ const ImageView = () => {
               download
               className="download-button"
             >
-              <span><ion-icon name="arrow-down"></ion-icon><span className='tooltip'>Download</span></span>
+              <span><ArrowDownToLine size={20} strokeWidth={1.75} /><span className='tooltip'>Download</span></span>
             </a>
           )}
           <span onClick={() => setImageShow(false)}>
-            <ion-icon name="close"></ion-icon>
+            <X size={20} strokeWidth={2.5} />
           </span>
         </div>
       </div>
 
       <div className="view_image">
-        {(currentImage.url && currentImage.type === 'video') ? <video src={currentImage.url} controls autoPlay></video> : <img src={currentImage.url ||currentImage.aigen_picture_url} alt="" />}
+        {(currentImage.url && currentImage.type === 'video') ? <video src={currentImage.url} controls autoPlay></video> : <img src={currentImage.url || currentImage.aigen_picture_url} alt="" />}
       </div>
 
       {/* <div className="view_image_list">

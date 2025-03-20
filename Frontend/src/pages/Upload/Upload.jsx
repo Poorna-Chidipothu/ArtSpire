@@ -222,6 +222,7 @@ import axios from 'axios';
 import './Upload.css';
 import { StoreContext } from '../../context/storeContext';
 import no_file from '../../assets/no_file1.png';
+import { X } from 'lucide-react';
 
 const Upload = () => {
     const { url } = useContext(StoreContext);
@@ -352,7 +353,7 @@ const Upload = () => {
                             <button type='button' onClick={handleClick}>Select Files</button>
                         </form>
                     </span>
-                    <span className='error'>{error && <p>{error}</p>}</span>
+                    <span className='error_msg'>{error && <p>{error}</p>}</span>
                 </div>
             </div>
 
@@ -375,7 +376,7 @@ const Upload = () => {
                                         ) : null}
 
                                         <button type='button' className='media_cls' onClick={() => handleDelete(index)}>
-                                            <ion-icon name="close"></ion-icon>
+                                        <X size={18} strokeWidth={2.5} />
                                         </button>
                                     </div>
 

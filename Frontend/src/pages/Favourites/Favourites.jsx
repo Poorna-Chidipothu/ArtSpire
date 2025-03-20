@@ -2,6 +2,7 @@ import { useContext, useEffect, useState,useRef } from 'react';
 import './Favourites.css'
 import { StoreContext } from '../../context/storeContext';
 import axios from 'axios';
+import { Play } from 'lucide-react';
 
 const Favourites = () => {
   const { url, setAlertBox, setImgId, myImages, setMyImages } = useContext(StoreContext);
@@ -70,7 +71,7 @@ const Favourites = () => {
               ) : (
                 <>
                   <span className="video_play" onClick={() => handleVideoToggle(index)}>
-                    <ion-icon name="play"></ion-icon>
+                    <Play fill="#333" size={16} strokeWidth={1.75} />
                   </span>
                   <video src={media.media_url} ref={(el) => (videoRefs.current[index] = el)}></video>
                 </>

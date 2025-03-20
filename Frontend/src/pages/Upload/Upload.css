@@ -58,7 +58,7 @@
     margin-top: 20px;
     cursor: pointer;
 }
-.upload_controls .error{
+.upload_controls .error_msg{
     color: red;
     padding-top: 25px;
 }
@@ -212,7 +212,7 @@
         opacity: 0.3;
     }
 
-    .upload_controls .error{
+    .upload_controls .error_msg{
         padding-top: 25px;
         font-size: 18px;
     }

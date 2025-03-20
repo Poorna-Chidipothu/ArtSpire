@@ -67,8 +67,8 @@ footer{
 .footer-section ul li a:hover{
     text-decoration: underline;
 }
-.footer-section ul li a ion-icon{
-    transform: rotate(-45deg);
+.footer-section ul li a .link_arrow{
+    transform: rotate(45deg);
 }
 
 

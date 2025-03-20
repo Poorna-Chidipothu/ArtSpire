@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Eye, EyeOff, Lock } from 'lucide-react';
 
 const Password = ({ onChangeHandler,pass,placeholder }) => {
     const [showPassword, setShowPassword] = useState(false);
@@ -6,8 +7,12 @@ const Password = ({ onChangeHandler,pass,placeholder }) => {
     return (
         <div className="input_box">
             <input type={showPassword ? "text" : "password"} name="password" onChange={onChangeHandler} value={pass} placeholder={placeholder} required />
-            <i className="uil uil-lock password"></i>
-            <i className={showPassword ? "uil uil-eye pw_hide" : "uil uil-eye-slash pw_hide" } onClick={() => setShowPassword(!showPassword)}></i>
+            <Lock className="password lg_icon" size={20} strokeWidth={1.75}/>
+            {/* <i className="uil uil-lock password"></i> */}
+            {showPassword 
+                ? <Eye className="pw_hide lg_icon" size={20} strokeWidth={1.75} onClick={() => setShowPassword(!showPassword)}/> 
+                : <EyeOff className="pw_hide lg_icon" size={20} strokeWidth={1.75} onClick={() => setShowPassword(!showPassword)}/>
+            }
         </div>
     )
 }

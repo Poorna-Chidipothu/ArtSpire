@@ -75,7 +75,7 @@
 .search_box button span{
     display: block;
 }
-.search_box button ion-icon{
+.search_box button .srch_icon{
     display: none;
 }
 
@@ -91,7 +91,7 @@
     .search_box button span{
         display: none;
     }
-    .search_box button ion-icon{
+    .search_box button .srch_icon{
         display: block;
     }
 }
