@@ -94,6 +94,15 @@
     cursor: pointer;
 }
 
+.signup_msg .button .link_arrow{
+    transform: rotate(45deg);
+    transition: all .3s ease-in-out;
+}
+.signup_msg .button:hover .link_arrow{
+    transform: translate(3px,-3px) rotate(45deg);
+}
+
+
 @media screen and (max-width : 767px){
     
     .home .images_list{
